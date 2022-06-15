@@ -15,3 +15,7 @@ quorum=kforum
 usa=uesa
 usb=uesbe
 usd=uesde
+uv=ufał
+uw=uwu
+uwr=uwuer
+uwp=uwupe
