@@ -2,6 +2,8 @@
 ; The = sign is used, but there must be no spaces between the word and its pronunciation: spaces separate individual words in collocation entries
 aqua=akfa
 axm/i
+cia/i
+ert/i
 itd/i
 itp/i
 nba/i
@@ -20,3 +22,5 @@ uv/i
 uw/i
 uwr/i
 uwp/i
+fizyka/2
+matematyka/2
