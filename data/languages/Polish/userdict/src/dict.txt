@@ -3,12 +3,17 @@
 aqua=akfa
 axm/i
 cia/i
+doc/i
+docx/i
+dotm/i
 ert/i
 itd/i
 itp/i
 nba/i
 nvda/i
+odt/i
 onz/i
+pfron=pefron
 pge/i
 pko/i
 qui=kfi
