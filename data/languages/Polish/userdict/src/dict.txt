@@ -29,3 +29,5 @@ uwr/i
 uwp/i
 fizyka/2
 matematyka/2
+polonistyka/2
+języki/2
