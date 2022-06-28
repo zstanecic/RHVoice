@@ -63,14 +63,16 @@ pau e r z a c e m pau
 pau e r z a t s pau 
 pau e r z a t s e m pau 
 pau f i k si e pau
-pau f i k s i n g pau 
-pau f o r t i s s i m o pau 
-pau g i p si a r ni a pau 
+pau f i k s i n g pau
+pau f i l e z i l l a pau
+pau f o r t i s s i m o pau
+pau g i p si a r ni a pau
 pau g o dzi i l l a pau
-pau g r ih p si i k pau 
-pau h i p e r z r en ch n ih pau 
-pau h i s t o r y a pau 
+pau g r ih p si i k pau
+pau h i p e r z r en ch n ih pau
+pau h i s t o r y a pau
 pau y a k zh e pau 
+pau y e sh i b a pau
 pau k a w a m a zh a pau 
 pau k a m b o dzh ih pau
 pau k a r ch m a zh a pau 
@@ -117,6 +119,7 @@ pau ni e p sh e k o m a zh a ni pau
 pau ni e r o z i g r a n e pau 
 pau ni e r o z i s k sh o n e pau 
 pau ni e si i n o b r o d on pau 
+pau ni e z a n z i b a r s c ih pau
 pau ni e z i d e n t ih f i k o v a n ih pau
 pau ni e z i l u s t r o v a n ih pau
 pau ni e z i n d ih v i d u a l i z o v a n ih pau
@@ -178,6 +181,7 @@ pau r o z m a r z a pau
 pau r ih c e zh a h pau 
 pau r ih m a zh a pau 
 pau si a r a pau 
+pau si e dzi i b a h pau
 pau s i g l u m pau 
 pau s i g m a pau 
 pau s i g n pau 
@@ -227,6 +231,7 @@ pau z a ch o w pau
 pau z a ch e w a pau 
 pau z a k sh e p pau 
 pau z a m a r z a pau 
+pau z a n z i b a r pau
 pau z d e z i n t e g r o v a n on pau 
 pau z g w o si i l i pau 
 pau z g w o si i l i b ih pau 
