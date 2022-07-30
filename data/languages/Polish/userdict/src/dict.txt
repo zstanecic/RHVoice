@@ -9,6 +9,7 @@ dotm/i
 ert/i
 itd/i
 itp/i
+lte/i
 nba/i
 nvda/i
 odt/i
@@ -20,9 +21,11 @@ qui=kfi
 quo=kfo
 quorum=kforum
 uac/i
+upc/i
 usa/i
 usb/i
 usd/i
+utf/i
 uv/i
 uw/i
 uwr/i
@@ -31,3 +34,17 @@ fizyka/2
 matematyka/2
 polonistyka/2
 języki/2
+maks&imum
+maks&im{a,ów,om,ami,ach}
+s&itar
+s&itar{a,ze,ry,rów}
+s&irtaki
+s&ilos
+s&ilos{u,ie,owi,ach,ami,em,y,ów}
+s&idney
+s&idney{a,em,ami,ach,u,owi}
+silesia=S&ilezja
+Silesii=S&ilezji
+Silesię=S&ilezję
+Silesią=S&ilezją
+Silesio=S&ilezjo
