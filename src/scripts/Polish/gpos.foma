@@ -48,7 +48,7 @@ chociażby |
 toteż | 
 więc | 
 choćby | 
-żeby ; 
+żeby;
 
 define Preposition 
 bez | 
@@ -87,9 +87,11 @@ przy |
 przeciw | 
 przeciwko | 
 prócz | 
+przez | 
 później | 
 spośród | 
-przez ; 
+w | 
+przez;
 
 define Particle 
 kolwiek | 
@@ -121,7 +123,7 @@ może |
 już | 
 aczkolwiek | 
 to | 
-jakoby ; 
+jakoby;
 
 define Relative 
 gdzie | 
@@ -182,7 +184,7 @@ czyjih |
 czyją | 
 czyja | 
 czyje | 
-czym ; 
+czym;
 
 define Personal 
 wam | 
@@ -219,7 +221,7 @@ cię |
 tobą | 
 ci | 
 ty | 
-ja ; 
+ja;
 
 define Possessive 
 Wasz | 
@@ -273,7 +275,7 @@ twoimi |
 twoich | 
 twój | 
 twoją | 
-twoja ; 
+twoja;
 
 define FunctionWord Conjunction | Preposition | Particle | Relative | Personal | Possessive;
 
