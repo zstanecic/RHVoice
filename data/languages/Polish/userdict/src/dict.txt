@@ -6,7 +6,7 @@ ax/i
 axm/i
 ccir/i
 cia/i
-dna/i
+DNA/i
 dlna/i
 doc/i
 docx/i
@@ -25,6 +25,7 @@ pko/i
 qui=kfi
 quo=kfo
 quorum=kforum
+tpsa/i
 uac/i
 upc/i
 upnp/i
