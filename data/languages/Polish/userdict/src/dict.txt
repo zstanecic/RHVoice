@@ -1,8 +1,12 @@
 ; The file must be in UTF-8.
 ; The = sign is used, but there must be no spaces between the word and its pronunciation: spaces separate individual words in collocation entries
 aqua=akfa
+ak/i
+ax/i
 axm/i
 cia/i
+dna/i
+dlna/i
 doc/i
 docx/i
 dotm/i
@@ -22,6 +26,7 @@ quo=kfo
 quorum=kforum
 uac/i
 upc/i
+upnp/i
 usa/i
 usb/i
 usd/i
