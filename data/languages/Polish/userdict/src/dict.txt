@@ -4,6 +4,7 @@ aqua=akfa
 ak/i
 ax/i
 axm/i
+ccir/i
 cia/i
 dna/i
 dlna/i
