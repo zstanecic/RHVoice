@@ -50,8 +50,11 @@ s&ilos
 s&ilos{u,ie,owi,ach,ami,em,y,ów}
 s&idney
 s&idney{a,em,ami,ach,u,owi}
-silesia=S&ilezja
-Silesii=S&ilezji
-Silesię=S&ilezję
-Silesią=S&ilezją
-Silesio=S&ilezjo
+s&ile(si=zj)*
+Mateusz/2
+napoić/2
+Tadeusz/2
+altruizm/2
+co/1
+to/1
+pi(zz=cc)*
