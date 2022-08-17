@@ -6,6 +6,7 @@ ax/i
 axm/i
 ccir/i
 cia/i
+cpu/i
 DNA/i
 dlna/i
 doc/i
