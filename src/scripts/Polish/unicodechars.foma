@@ -18,6 +18,7 @@ define UnicodeToNativeTranslit
 [%ž|%Ž] -> {ż} || _ ,,
 [%š|%Š] -> {sz} || _ ,,
 [%đ|%Đ] -> {dź} || _ ,,
+[%ø|%Ø] -> {o} || _ ,,
 [%ř|%Ř] -> {rz} || _ ,,
 [%ň|%Ň] -> {ń} || _ ,,
 [%ě|%Ě] -> {ie} || _ ,,
@@ -290,6 +291,7 @@ define UnicodeToNativeTranslitTok
 [%ž|%Ž] -> ż || _ ,,
 [%š|%Š] -> s || _ ,,
 [%đ|%Đ] -> d || _ ,,
+[%ø|%Ø] -> o || _ ,,
 [%ř|%Ř] -> r || _ ,,
 [%ň|%Ň] -> ń || _ ,,
 [%ě|%Ě] -> i || _ ,,
@@ -562,6 +564,7 @@ define UnicodeSpell
 [[%ž|%Ž]:[zet z haczkiem]]|
 [[%š|%Š]:[es z haczkiem]]|
 [[%đ|%Đ]:[de skreślone]]|
+[[%ø|%Ø]:[o skreślone]]|
 [[%ř|%Ř]:[er z haczkiem]]|
 [[%ň|%Ň]:[en z haczkiem]]|
 [[%ě|%Ě]:[e z haczkiem]]|
@@ -834,6 +837,7 @@ define UnicodeLseq
 %ž:[z e t z h a ch k y e m]|
 %š:[e s z h a ch k y e m]|
 %đ:[d e s k r e si l o n e]|
+%ø:[o s k r e si l o n e]|
 %ř:[e r z h a ch k y e m]|
 %ň:[e n z h a ch k y e m]|
 %ě:[e z h a ch k y e m]|
@@ -1106,6 +1110,7 @@ define UnicodeDowncase
 %Ž -> %ž || _ ,,
 %Š -> %š || _ ,,
 %Đ -> %đ || _ ,,
+%Ø -> %ø || _ ,,
 %Ř -> %ř || _ ,,
 %Ň -> %ň || _ ,,
 %Ě -> %ě || _ ,,
