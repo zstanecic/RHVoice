@@ -62,3 +62,6 @@ pi(zz=cc)*
 android/-1
 pro(śb=źb)*
 pró(śb=źp)*
+Kas&im*
+*byśmy/1
+*byście/1
