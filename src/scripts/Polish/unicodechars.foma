@@ -5,6 +5,7 @@ define UnicodeToNativeTranslit
 [%ß|%ẞ] -> {s} || _ ,,
 [%ñ|%Ñ] -> {ń} || _ ,,
 [%ç|%Ç] -> {s} || _ ,,
+[%ş|%Ş] -> {sz} || _ ,,
 [%ḉ|%Ḉ] -> {c} || _ ,,
 [%á|%Á] -> {a} || _ ,,
 [%é|%É] -> {e} || _ ,,
@@ -328,6 +329,7 @@ define UnicodeToNativeTranslitTok
 [%ß|%ẞ] -> s || _ ,,
 [%ñ|%Ñ] -> ń || _ ,,
 [%ç|%Ç] -> s || _ ,,
+[%ş|%Ş] -> s || _ ,,
 [%ḉ|%Ḉ] -> c || _ ,,
 [%á|%Á] -> a || _ ,,
 [%é|%É] -> e || _ ,,
@@ -651,6 +653,7 @@ define UnicodeSpell
 [[%ß|%ẞ]:[szarfes es]]|
 [[%ñ|%Ñ]:[en z tyldą]]|
 [[%ç|%Ç]:[ce z cedyllą]]|
+[[%ş|%Ş]:[es z cedyllą]]|
 [[%ḉ|%Ḉ]:[ce ostre z cedyllą]]|
 [[%á|%Á]:[a ostre]]|
 [[%é|%É]:[e ostre]]|
@@ -974,6 +977,7 @@ define UnicodeLseq
 %ß:[sh a r f e s e s]|
 %ñ:[e n z t ih l d on]|
 %ç:[c e z c e d ih l l on]|
+%ş:[e s z c e d ih l l on]|
 %ḉ:[c e o s t r e z c e d ih l l on]|
 %á:[a o s t r e]|
 %é:[e o s t r e]|
@@ -1297,6 +1301,7 @@ define UnicodeDowncase
 %ẞ -> %ß || _ ,,
 %Ñ -> %ñ || _ ,,
 %Ç -> %ç || _ ,,
+%Ş -> %ş || _ ,,
 %Ḉ -> %ḉ || _ ,,
 %Á -> %á || _ ,,
 %É -> %é || _ ,,
