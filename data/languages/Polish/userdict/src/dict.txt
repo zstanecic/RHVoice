@@ -23,6 +23,7 @@ onz/i
 pfron=pefron
 pge/i
 pko/i
+rna/i
 qui=kfi
 quo=kfo
 quorum=kforum
