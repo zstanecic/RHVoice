@@ -17,14 +17,15 @@
 define LetterLseq [
 а:ax1 |
 и:iii1 |
-a:aa |
+a:a |
 á:[d l o u h ee aa] |
 b:[b ee] |
 c:[c ee] |
 č:[ts ee] |
 d:[d ee] |
+ě:[ije] |
 e:ee |
-ď:[i j e] |
+ď:[dj ee] |
 é:[d l o u h ee ee] |
 f:[e f] |
 g:[g ee] |
@@ -46,7 +47,7 @@ r:[e r] |
 s:[e s] |
 š:[e sh] |
 t:[t ee] |
-ť:[t ee] |
+ť:[tj ee] |
 u:u |
 ú:[d l o u h ee uu] |
 ů:[uu s k r uu sh k e m] |
@@ -56,7 +57,7 @@ x:[i k s] |
 y:[y p s i l o n] |
 ý:[d l o u h ee y p s i l o n] |
 z:[z e t] |
-ž:[zh e t] ] ;
+ž:[zh e ] ] ;
 
 source stress.foma
 
