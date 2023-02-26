@@ -1,0 +1,93 @@
+# Copyright (C) 2022 Darko Milosevic <daremc86@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 2.1 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+define CaseVariants 
+a -> a|A , 
+á -> á|Á , 
+b -> b|B , 
+c -> c|C , 
+č -> č|Č , 
+d -> d|D , 
+ď -> ď|Ď , 
+e -> e|E , 
+é -> é|É , 
+ě -> ě|Ě , 
+f -> f|F , 
+g -> g|G , 
+h -> h|H , 
+i -> i|I , 
+í -> í|Í , 
+j -> j|J , 
+k -> k|K , 
+l -> l|L , 
+m -> m|M , 
+n -> n|N , 
+ň -> ň|Ň , 
+o -> o|O , 
+ó -> ó|Ó , 
+p -> p|P , 
+q -> q|Q , 
+r -> r|R , 
+ř -> ř|Ř , 
+s -> s|S , 
+š -> š|Š , 
+t -> t|T , 
+ť -> ť|Ť , 
+u -> u|U , 
+ú -> ú|Ú , 
+ů -> ů|Ů , 
+v -> v|V , 
+w -> w|W , 
+x -> x|X , 
+y -> y|Y , 
+ý -> ý|Ý , 
+z -> z|Z , 
+ž -> ž|ž ; 
+
+#We should to define vocalics r and l
+
+define vocalics [R | r | L | l ] ;
+
+define ConsonantLetterSequence 
+[b|c|č|d|ď|f|g|h|j|k|l|m|n|ň|q|p|r|ř|s|š|t|ť|v|w|x|z|ž]+ ; 
+
+define LetterSequence 
+[ConsonantLetterSequence .o. CaseVariants .o. vocalizers].l ; 
+
+define Letter a|A|á|Á|b|B|c|C|č|Č|d|D|ď|Ď|e|E|é|É|ě|Ě|f|F|g|G|h|H|i|I|í|Í|j|J|k|K|l|L|m|M|n|N|ň|Ň|o|O|ó|Ó|p|P|q|Q|r|R|ř|Ř|s|S|š|Š|t|T|ť|Ť|u|U|ú|Ú|ů|Ů|v|V|w|W|x|X|y|Y|ý|Ý|z|Z|ž|Ž;
+
+define NZDigit 1|2|3|4|5|6|7|8|9;
+define Digit %0|NZDigit;
+
+define Number (%-) [%0 | [NZDigit Digit*]];
+
+define Word Letter+ ;
+
+define Stage1 
+Number @-> ... num || _ ,, 
+Word @-> ... word || _ .#. | \Letter ,, 
+\[Letter | Digit] @-> ... sym || _ ; 
+
+define Stage2 
+word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
+num -> dig || Digit^15 _ ;
+
+define Stage3 
+lseq -> word ||.#.  [w|z|W|Z] _ ,,
+word -> lseq || .#.  [y|Y|ó|Ó] _ ;
+
+regex Stage1 .o.
+Stage2 .o. 
+Stage3;
