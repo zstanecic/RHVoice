@@ -83,8 +83,7 @@ word -> lseq || [.#.|word|num|sym] LetterSequence _ ,,
 num -> dig || Digit^15 _ ;
 
 define Stage3 
-lseq -> word ||.#.  [v|k|V|K] _ ,,
-word -> lseq || .#.  [y|Y|ó|Ó] _ ;
+lseq -> word ||.#.  [v|z|V|Z|k|K] _ ;
 
 regex Stage1 .o.
 Stage2 .o. 

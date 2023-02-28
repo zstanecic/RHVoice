@@ -32,7 +32,6 @@ e:e |
 f:f | 
 g:g | 
 h:h | 
-[ch]:hh | 
 i:i | 
 í:ii | 
 j:j | 
@@ -63,6 +62,7 @@ z:z |
 ž:zh ; 
 
 define Digraphs 
+[c h]:[hh] | 
 [m ě]:[m nj e] | 
 [d i]:[dj i] | 
 [t i]:[tj i] | 
