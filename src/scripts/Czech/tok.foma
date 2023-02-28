@@ -59,7 +59,7 @@ z -> z|Z ,
 #We should to define vocalics r and l
 # so we exclude r and l from ConsonantLetterSequence.
 define ConsonantLetterSequence 
-[b|c|č|d|ď|f|g|h|j|k|m|n|ň|q|p|ř|s|š|t|ť|v|w|x|z|ž]+ ; 
+[b|c|č|d|ď|f|g|h|j|k|m|n|ň|q|p|ř|s|š|t|ť|v|w|x|z|ž]+ - [l|k|r|s|v|z]; 
 
 define LetterSequence 
 [ConsonantLetterSequence .o. CaseVariants].l ; 
@@ -82,9 +82,6 @@ define Stage2
 word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
 num -> dig || Digit^15 _ ;
 
-define Stage3 
-lseq -> word ||.#.  [v|z|V|Z|k|K] _ ;
-
 regex Stage1 .o.
-Stage2 .o. 
-Stage3;
+Stage2 ; 
+
