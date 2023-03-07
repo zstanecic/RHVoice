@@ -18,20 +18,20 @@ define LetterLseq [
 а:ax1 |
 и:iii1 |
 a:a |
-á:[d l o u h ee aa] |
+á:[aa] |
 b:[b ee] |
 c:[c ee] |
 č:[ts ee] |
 d:[d ee] |
 ě:[ije] |
-e:ee |
+e:e |
 ď:[dj ee] |
-é:[d l o u h ee ee] |
+é:[ee] |
 f:[e f] |
 g:[g ee] |
 h:[h aa] |
-i:ii |
-í:[d l o u h ee ii] |
+i:i |
+í:[ii] |
 j:[j ee] |
 k:[k aa] |
 l:[e l] |
@@ -39,7 +39,7 @@ m:[e m] |
 n:[e n] |
 ň:[e nj] |
 o:o |
-ó:[d l o u h ee oo] |
+ó:[oo] |
 p:[p ee] |
 q:[k v ee] |
 r:[e r] |
@@ -49,15 +49,15 @@ s:[e s] |
 t:[t ee] |
 ť:[tj ee] |
 u:u |
-ú:[d l o u h ee uu] |
-ů:[uu s k r uu sh k e m] |
+ú:[uu] |
+ů:[uu ] |
 v:[v ee] |
-w:[d v o j t e v ee] |
+w:[d v o j i t ee v ee] |
 x:[i k s] |
 y:[y p s i l o n] |
-ý:[d l o u h ee y p s i l o n] |
-z:[z e t] |
-ž:[zh e ] ] ;
+ý:[yy p s i l o n] |
+z:[z zet] |
+ž:[zh e t] ] ;
 
 source stress.foma
 

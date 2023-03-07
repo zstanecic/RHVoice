@@ -34,7 +34,7 @@ define InsertTrillions
 define RemoveSkippedParts 
 %0 %0 %0 [tisíc|miliónu|miliard|bilionů] -> 0 ;
 
-define Units %0:0|1:jedna|2:dva|3:tři|4:čtyři|5:pět|6:šest|7:sedm|8:osm|9:devět;
+define Units %0:0|1:jedna|2:dva|3:tři|4:čtyři|5:pět|6:šest|7:sedum|8:osum|9:devět;
 
 define Teens 1:0 [%0:deset|1:jedenáct|2:dvanáct|3:třináct|4:čtrnáct|5:patnáct|6:šestnáct|7:sedmnáct|8:osmnáct|9:devatenáct];
 
