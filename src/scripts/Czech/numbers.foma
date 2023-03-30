@@ -48,14 +48,14 @@ define DigitsToWords
 UpToThousand @->;
 
 define FixCase 
-tisíc:tisíc|miliónu:milion|miliard:miliard|bilionů:bilion -> || jeden _ ,, 
-tisíc:tisíce|miliónu:milióny|miliard:miliardy|bilion:biliony -> || dva|tři|čtyři _ ; 
+tisíc:tisíc|miliónu:milión|miliard:miliárda|bilionů:bilión -> || jedna _ ,, 
+tisíc:tisíce|miliónu:milióny|miliard:miliárdy|bilion:bilióny -> || dva|tři|čtyři _ ; 
 
 define Fix31Tys 
 tisíc:tisíc|
-milion:milion|
-miliard:miliard|
-bilion:bilion -> || 
+milion:miliůnů|
+miliard:miliárd|
+bilion:biliůnů -> || 
 [dvacet|třicet|čtyřicet|padesát|
 šedesát|sedmdesát|osmdesát|devadesát|
 sto|dvěstě|třista|čtyřista|pětset|šestset|
