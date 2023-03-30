@@ -53,9 +53,9 @@ tisíc:tisíce|miliónu:milióny|miliard:miliárdy|bilion:bilióny -> || dva|tř
 
 define Fix31Tys 
 tisíc:tisíc|
-milion:miliůnů|
+miliónu:miliónů|
 miliard:miliárd|
-bilion:biliůnů -> || 
+bilionů:biliónů -> || 
 [dvacet|třicet|čtyřicet|padesát|
 šedesát|sedmdesát|osmdesát|devadesát|
 sto|dvěstě|třista|čtyřista|pětset|šestset|
@@ -63,9 +63,9 @@ sedmset|osmset|devětset] jedna _ ;
 
 define RemoveOne 
 jedna -> 0 || .#.|GroupName _ tisíc,, 
-jedna -> 0 || .#.|GroupName _ milion,, 
-jedna -> 0 || .#.|GroupName _ miliard,, 
-jedna -> 0 || .#.|GroupName _ bilion ; 
+jedna -> 0 || .#.|GroupName _ milión,, 
+jedna -> 0 || .#.|GroupName _ miliárda,, 
+jedna -> 0 || .#.|GroupName _ bilión ; 
 
 regex 
 Number .o. 
