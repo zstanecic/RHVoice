@@ -49,7 +49,15 @@ UpToThousand @->;
 
 define FixCase 
 tisíc:tisíc|miliónu:milión|miliard:miliárda|bilionů:bilión -> || jedna _ ,, 
-tisíc:tisíce|miliónu:milióny|miliard:miliárdy|bilion:bilióny -> || dva|tři|čtyři _ ; 
+tisíc:tisíce|miliónu:milióny|miliard:miliárdy|bilion:bilióny -> || dva|tři|čtyři _  ;
+
+define ReplaceDva 
+dva -> dvě || ^ _ miliárdy ;
+
+define ReplaceJedna 
+jedna -> jeden || ^ _ bilión ,, 
+jedna -> jeden || ^ _ milión ;
+
 
 define Fix31Tys 
 tisíc:tisíc|
@@ -60,6 +68,16 @@ bilionů:biliónů -> ||
 šedesát|sedmdesát|osmdesát|devadesát|
 sto|dvěstě|třista|čtyřista|pětset|šestset|
 sedmset|osmset|devětset] jedna _ ;
+
+define Fix3234Tys 
+tisíce:tisíc|
+milióny:miliónů|
+miliárdy:miliárd|
+bilióny:biliónů -> || 
+[dvacet|třicet|čtyřicet|padesát|
+šedesát|sedmdesát|osmdesát|devadesát|
+sto|dvěstě|třista|čtyřista|pětset|šestset|
+sedmset|osmset|devětset] dva|tři|čtyři _ ;
 
 define RemoveOne 
 jedna -> 0 || .#.|GroupName _ tisíc,, 
@@ -76,6 +94,9 @@ InsertTrillions .o.
 RemoveSkippedParts .o. 
 DigitsToWords .o. 
 FixCase .o. 
+ReplaceDva .o. 
+ReplaceJedna .o. 
 RemoveOne .o.
 Fix31Tys  .o.
-InsertMinus;
+Fix3234Tys  .o.
+InsertMinus ;
