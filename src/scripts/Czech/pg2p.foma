@@ -16,11 +16,11 @@
 #  Czech przepozisions should be pronounced as letters, not words,  when such word is only one in the utterance.
 
 define czechPrep [
-v: [v ee] |
-k: [k aa] |
+v: [v ee1] |
+k: [k aa1] |
 s: [e s] |
 r:[e r]]
 @-> || .#. _ .#.;
 
 
-regex czechPprep;
+regex czechPrep;
