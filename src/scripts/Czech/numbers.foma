@@ -23,16 +23,16 @@ define InsertThousands
 [..] -> tisíc || Digit _ Digit^3 .#.;
 
 define InsertMillions 
-[..] -> miliónu || Digit _ Digit^3 tisíc;
+[..] -> miliónů || Digit _ Digit^3 tisíc;
 
 define InsertBillions 
-[..] -> miliard || Digit _ Digit^3 miliónu;
+[..] -> miliárd || Digit _ Digit^3 miliónů;
 
 define InsertTrillions 
-[..] -> bilionů || Digit _ Digit^3 miliard;
+[..] -> biliónů || Digit _ Digit^3 miliárd;
 
 define RemoveSkippedParts 
-%0 %0 %0 [tisíc|miliónu|miliard|bilionů] -> 0 ;
+%0 %0 %0 [tisíc|miliónů|miliárd|biliónů] -> 0 ;
 
 define Units %0:0|1:jedna|2:dva|3:tři|4:čtyři|5:pět|6:šest|7:sedum|8:osum|9:devět;
 
@@ -48,8 +48,8 @@ define DigitsToWords
 UpToThousand @->;
 
 define FixCase 
-tisíc:tisíc|miliónu:milión|miliard:miliárda|bilionů:bilión -> || jedna _ ,, 
-tisíc:tisíce|miliónu:milióny|miliard:miliárdy|bilion:bilióny -> || dva|tři|čtyři _  ;
+tisíc:tisíc|miliónů:milión|miliárd:miliárda|biliónů:bilión -> || jedna _ ,, 
+tisíc:tisíce|miliónů:milióny|miliárd:miliárdy|bilión:bilióny -> || dva|tři|čtyři _  ;
 
 define ReplaceDva 
 dva -> dvě || ^ _ miliárdy ;
@@ -61,15 +61,15 @@ jedna -> jeden || ^ _ milión ;
 
 define Fix31Tys 
 tisíc:tisíc|
-miliónu:miliónů|
-miliard:miliárd|
-bilionů:biliónů -> || 
+miliónů:miliónů|
+miliárd:miliárd|
+biliónů:biliónů -> || 
 [dvacet|třicet|čtyřicet|padesát|
 šedesát|sedmdesát|osmdesát|devadesát|
 sto|dvěstě|třista|čtyřista|pětset|šestset|
 sedmset|osmset|devětset] jedna _ ;
 
-define Fix3234Tys 
+define Fix32Tys 
 tisíce:tisíc|
 milióny:miliónů|
 miliárdy:miliárd|
@@ -77,7 +77,27 @@ bilióny:biliónů -> ||
 [dvacet|třicet|čtyřicet|padesát|
 šedesát|sedmdesát|osmdesát|devadesát|
 sto|dvěstě|třista|čtyřista|pětset|šestset|
-sedmset|osmset|devětset] dva|tři|čtyři _ ;
+sedmset|osmset|devětset] dva _ ;
+
+define Fix33Tys 
+tisíce:tisíc|
+milióny:miliónů|
+miliárdy:miliárd|
+bilióny:biliónů -> || 
+[dvacet|třicet|čtyřicet|padesát|
+šedesát|sedmdesát|osmdesát|devadesát|
+sto|dvěstě|třista|čtyřista|pětset|šestset|
+sedmset|osmset|devětset] tři _ ;
+
+define Fix34Tys 
+tisíce:tisíc|
+milióny:miliónů|
+miliárdy:miliárd|
+bilióny:biliónů -> || 
+[dvacet|třicet|čtyřicet|padesát|
+šedesát|sedmdesát|osmdesát|devadesát|
+sto|dvěstě|třista|čtyřista|pětset|šestset|
+sedmset|osmset|devětset] čtyři _ ;
 
 define RemoveOne 
 jedna -> 0 || .#.|GroupName _ tisíc,, 
@@ -98,5 +118,7 @@ ReplaceDva .o.
 ReplaceJedna .o. 
 RemoveOne .o.
 Fix31Tys  .o.
-Fix3234Tys  .o.
+Fix32Tys  .o.
+Fix33Tys  .o.
+Fix34Tys  .o.
 InsertMinus ;
