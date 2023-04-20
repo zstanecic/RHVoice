@@ -64,9 +64,9 @@ z:z |
 define Digraphs 
 [c h]:[hh] | 
 [m ě]:[m nj e] | 
-[d ije]:[dj ije] | 
-[t ije]:[tj ije] | 
-[n ije]:[nj ije] | 
+[d ije]:[dj e] | 
+[t ije]:[tj e] | 
+[n ije]:[nj e] | 
 [d i]:[dj i] | 
 [t i]:[tj i] | 
 [n i]:[nj i] | 
