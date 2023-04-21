@@ -18,6 +18,7 @@
 define czechPrep [
 v: [v ee1] |
 k: [k aa1] |
+l: [e l] |
 s: [e s] |
 r:[e r]]
 @-> || .#. _ .#.;
