@@ -194,3 +194,4 @@ vulka(ni=ny)*
 ver(ti=ty)k*
 ze(ni=ty)t*
 žela(ti=ty)n*
+ak(tivit=tyvit)*

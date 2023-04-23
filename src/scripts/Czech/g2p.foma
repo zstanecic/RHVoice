@@ -24,7 +24,6 @@ c:c |
 č:ts | 
 d:d | 
 [dz]:dz | 
-[dž]:dzh | 
 ď:dj | 
 e:e | 
 é:ee | 
@@ -63,6 +62,7 @@ z:z |
 
 define Digraphs 
 [c h]:[hh] | 
+[d zh]:[dzh] | 
 [m ě]:[m nj e] | 
 [d ije]:[dj e] | 
 [t ije]:[tj e] | 
