@@ -15,6 +15,7 @@
 
 define CaseVariants 
 a -> a|A , 
+ä -> ä|Ä , 
 á -> á|Á , 
 b -> b|B , 
 c -> c|C , 
@@ -32,15 +33,19 @@ i -> i|I ,
 j -> j|J , 
 k -> k|K , 
 l -> l|L , 
+ľ -> ľ|Ľ , 
+ĺ -> ĺ|Ĺ , 
 m -> m|M , 
 n -> n|N , 
 ň -> ň|Ň , 
 o -> o|O , 
 ó -> ó|Ó , 
+ô -> ô|Ô , 
 p -> p|P , 
 q -> q|Q , 
 r -> r|R , 
 ř -> ř|Ř , 
+ŕ -> ŕ|Ŕ , 
 s -> s|S , 
 š -> š|Š , 
 t -> t|T , 
@@ -64,7 +69,7 @@ define ConsonantLetterSequence
 define LetterSequence 
 [ConsonantLetterSequence .o. CaseVariants].l ; 
 
-define Letter a|A|á|Á|b|B|c|C|č|Č|d|D|ď|Ď|e|E|é|É|ě|Ě|f|F|g|G|h|H|i|I|í|Í|j|J|k|K|l|L|m|M|n|N|ň|Ň|o|O|ó|Ó|p|P|q|Q|r|R|ř|Ř|s|S|š|Š|t|T|ť|Ť|u|U|ú|Ú|ů|Ů|v|V|w|W|x|X|y|Y|ý|Ý|z|Z|ž|Ž;
+define Letter a|A|ä|Ä|á|Á|b|B|c|C|č|Č|d|D|ď|Ď|e|E|é|É|ě|Ě|f|F|g|G|h|H|i|I|í|Í|j|J|k|K|l|L|ľ|Ľ|ĺ|Ĺ|m|M|n|N|ň|Ň|o|O|ó|Ó|ô|Ô|p|P|q|Q|r|R|ř|Ř|ŕ|Ŕ|s|S|š|Š|t|T|ť|Ť|u|U|ú|Ú|ů|Ů|v|V|w|W|x|X|y|Y|ý|Ý|z|Z|ž|Ž;
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;

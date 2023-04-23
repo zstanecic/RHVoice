@@ -18,6 +18,7 @@ define InitialTranscribe
 а:ax1 | 
 и:iii1 | 
 a:a | 
+ä:a | 
 á:aa | 
 b:b | 
 c:c | 
@@ -36,15 +37,19 @@ i:i |
 j:j | 
 k:k | 
 l:l | 
+ľ:l | 
+ĺ:l | 
 m:m | 
 n:n | 
 ň:nj | 
 o:o | 
 ó:oo | 
+ô:o | 
 p:p | 
 q:[k v] | 
 r:r | 
 ř:rz | 
+ŕ:r | 
 s:s | 
 š:sh | 
 t:t | 

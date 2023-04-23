@@ -18,6 +18,7 @@ define LetterLseq [
 а:ax1 |
 и:iii1 |
 a:a |
+ä:a |
 á:[aa] |
 b:[b ee] |
 c:[c ee] |
@@ -35,15 +36,19 @@ i:i |
 j:[j ee] |
 k:[k aa] |
 l:[e l] |
+ľ:[e l] |
+ĺ:[e l] |
 m:[e m] |
 n:[e n] |
 ň:[e nj] |
 o:o |
 ó:[oo] |
+ô:o |
 p:[p ee] |
 q:[k v ee] |
 r:[e r] |
 ř:[e rz] |
+ŕ:[e r] |
 s:[e s] |
 š:[e sh] |
 t:[t ee] |
