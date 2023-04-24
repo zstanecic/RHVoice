@@ -7,7 +7,7 @@ apod=a-podobné
 cd/i
 cdrom=cé-dé-rom
 rw/i
-dvd=dý vý dý
+dvd=dý-vý-dý
 ocr/i
 mp/i
 psč/i
