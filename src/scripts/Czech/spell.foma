@@ -16,20 +16,20 @@
 define Letter 
 [[a|A]:a] | 
 [[ä|Ä]:a] | 
-[[á|Á]:[dlouhé á]] | 
+[[á|Á]:[á dlouhé]] | 
 [[b|B]:bé] | 
 [[c|C]:cé] | 
 [[č|Č]:čé] | 
 [[d|D]:dé] | 
 [[ď|Ď]:ďé] | 
 [[e|E]:e] | 
-[[é|É]:[dlouhé é]] | 
+[[é|É]:[é dlouhé]] | 
 [[ě|Ě]:ije] | 
 [[f|F]:ef] | 
 [[g|G]:gé] | 
 [[h|H]:há] | 
 [[i|I]:i] | 
-[[í|Í]:[dlouhé í]] | 
+[[í|Í]:[í dlouhé ]] | 
 [[j|J]:jé] | 
 [[k|K]:ká] | 
 [[l|L]:el] | 
@@ -39,7 +39,7 @@ define Letter
 [[n|N]:en] | 
 [[ň|Ň]:eň] | 
 [[o|O]:o] | 
-[[ó|Ó]:[dlouhé ó]] | 
+[[ó|Ó]:[ó dlouhé]] | 
 [[ô|Ô]:o] | 
 [[p|P]:pé] | 
 [[q|Q]:kvé] | 
@@ -51,13 +51,13 @@ define Letter
 [[t|T]:té] | 
 [[ť|Ť]:ťé] | 
 [[u|U]:u] | 
-[[ú|Ú]:[dlouhé ú]] | 
+[[ú|Ú]:[ú dlouhé]] | 
 [[ů|Ů]:[ů s kroužkem]] | 
 [[v|V]:vé] | 
 [[w|W]:[dvojité vé]] | 
 [[x|X]:iks] | 
 [[y|Y]:ypsilon] | 
-[[ý|Ý]:[dlouhé ypsilon]] | 
+[[ý|Ý]:[ypsilon dlouhé]] | 
 [[z|Z]:zet] |
 [[ž|Ž]:žet] ; 
 
@@ -71,7 +71,7 @@ sp:mezera |
 nbsp:[nerozbitný prostor] ; 
 
 define Punctuation 
-%,:čarka | 
+%,:čárka | 
 %.:tečka | 
 %?:otazník | 
 %!:vykřičník | 
@@ -88,7 +88,7 @@ define Punctuation
 %}:[pravá složená] ; 
 
 define Symbol 
-%$:dolar | 
+%$:dolár | 
 %%:procent | 
 %° : stupeň | 
 %#:mřížka | 
@@ -98,7 +98,7 @@ define Symbol
 %/:lomítko | 
 %<:menší | 
 %=:rovna se | 
-%>:vjetší | 
+%>:větší | 
 %@:zavináč | 
 %\:zpětné lomítko | 
 %^:stříško | 
