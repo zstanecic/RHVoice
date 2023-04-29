@@ -214,3 +214,4 @@ mail=mejl
 e-mail=ímejl*
 telefo(ni=ny)*
 ca/i
+rh/i
