@@ -76,6 +76,10 @@ define Digit %0|NZDigit;
 
 define Number (%-) [%0 | [NZDigit Digit*]];
 
+define InsertMinus %- @-> mínus || _ ;
+
+define InsertPlus %+ @-> plus || _ ;
+
 define Word Letter+ ;
 
 define Stage1 
@@ -88,5 +92,7 @@ word -> lseq || [.#.|word|num|sym] LetterSequence _ ,,
 num -> dig || Digit^15 _ ;
 
 regex Stage1 .o.
-Stage2 ; 
+Stage2  .o.
+InsertMinus  .o.
+InsertPlus ; 
 
