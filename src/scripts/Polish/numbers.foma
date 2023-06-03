@@ -16,12 +16,16 @@
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
-define Number (%.) (%,) (%+) (%-) [ %0|[ NZDigit Digit^<15]];
+define UnformattedNumber (%-) [ Digit Digit^<15];
+define DecimalNumber [UnformattedNumber] [%. | %, | %0 | Digit]+;
+define Number DecimalNumber | UnformattedNumber;
 
-define InsertPlus %+ @-> plus || _ ;
 define InsertMinus %- @-> minus || _ ;
 define InsertDot %. @-> kropka || _ ;
 define InsertComma %, @-> przecinek || _ ;
+
+define Insertzeros 
+[%0] -> zero || [ .#. | %, | %. | [[.#. | %, | %.] %0+]] _ ;
 
 define InsertThousands 
 [..] -> tysięcy || Digit _ Digit^3 .#.;
@@ -73,6 +77,7 @@ jeden -> 0 || .#.|GroupName _ bilion ;
 
 regex 
 Number .o. 
+Insertzeros .o. 
 InsertThousands .o. 
 InsertMillions .o. 
 InsertBillions .o. 
@@ -82,7 +87,6 @@ DigitsToWords .o.
 FixCase .o. 
 RemoveOne .o.
 Fix31Tys  .o.
-InsertPlus .o.
 InsertDot .o.
 InsertComma .o.
 InsertMinus;
