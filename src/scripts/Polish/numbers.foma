@@ -28,7 +28,7 @@ define Insertzeros
 [%0] -> zero || [ .#. | %, | %. | [[.#. | %, | %.] %0+]] _ ;
 
 define InsertThousands 
-[..] -> tysięcy || Digit _ Digit^3 .#.;
+[..] -> tysięcy || Digit _ Digit^3 [.#. | %. | %,] ;
 
 define InsertMillions 
 [..] -> milionów || Digit _ Digit^3 tysięcy;
@@ -70,10 +70,10 @@ sto|dwieście|trzysta|czterysta|pięćset|sześset|
 siedemset|osiemset|dziewięćset] jeden _ ;
 
 define RemoveOne 
-jeden -> 0 || .#.|GroupName _ tysiąc,, 
-jeden -> 0 || .#.|GroupName _ milion,, 
-jeden -> 0 || .#.|GroupName _ miliard,, 
-jeden -> 0 || .#.|GroupName _ bilion ; 
+jeden -> 0 || [.#. | %. | %,] | GroupName _ tysiąc,, 
+jeden -> 0 || [.#. | %. | %,] | GroupName _ milion,, 
+jeden -> 0 || [.#. | %. | %,] | GroupName _ miliard,, 
+jeden -> 0 || [.#. | %. | %,] | GroupName _ bilion ; 
 
 regex 
 Number .o. 
@@ -87,6 +87,4 @@ DigitsToWords .o.
 FixCase .o. 
 RemoveOne .o.
 Fix31Tys  .o.
-InsertDot .o.
-InsertComma .o.
-InsertMinus;
+InsertMinus .o. InsertDot .o. InsertComma ;
