@@ -62,7 +62,7 @@ define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
 
 define UnformattedNumber (%-) [Digit Digit*] ;
-define DecimalNumber [UnformattedNumber] [%. | %, | %0 | Digit]+;
+define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
 define Number DecimalNumber | UnformattedNumber;
 
 define Word Letter+ ;
