@@ -85,7 +85,7 @@ Word @-> ... word || _ .#. | \Letter ,,
 
 define Stage2 
 word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
-num -> dig || Digit^15 _ ;
+num -> dig || Digit^16 _ ;
 
 regex Stage1 .o.
 Stage2;
