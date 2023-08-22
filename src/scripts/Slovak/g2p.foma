@@ -96,6 +96,7 @@ define VoicedConsonantPhonem [b|d|dj|dz|dzh|g|h|z|zh|v|m|n|nj|l|r|j] ;
 define VoicelessConsonantPhonem [p|t|tj|c|ts|k|hh|s|sh|f|vdp|vdt|vdtj|vdc|vdts|vdk|vdhh|vds|vdsh|vdf] ; 
 define ConsonantPhonem [VoicedConsonantPhonem | VoicelessConsonantPhonem | rz] ; 
 
+define viachlasException hh -> [c h] || .#. {via} _ {las} ;
 define deExceptions {de} @-> [ŧde] || .#. _ {bat} | {ce} | [f i n i t ii v] | {inte} | [k aa d] | {kor} | [k oo r] | {krement} | [k r ee t] | {leg} | {lim} | {pres} | {sig} | {sti} | {tail} | {tek} | [v ii z] | z , [k o r e sh p o n] _ n 
 , .#. {vi} _ a | [aa] | [ii] | o | u , {mo} _ r , {prezi} _ {nt} , .#. i _ a | [aa] | [ii] | {nti} | u , .#. {mo} _ l | m , .#. {fe} _ r | x , .#. {evi} _ n , {in} _ x , _ {ci} | [l f ii n] | [n t aa l] | {term} , i _ n | o , [sh t u] _ {nt} , .#. {ka} _ t , a _ k | p , _ {fin} , {je} _ n .#. | [n aa] , _ {but} | {fault} , .#. _ {mo} , [k a zh] | {mla} _ j , {po} | {pre} _ [nj] .#. , _ {gene} , _ {ment} | {menc} , {bor} _ l , _ {rby} , _ {vel} , _ [r n i ee] , {aka} _ {mic} | {mik} , _ {form} , {epi} _ {m} , {in} _ [ks] , {ten} _ {nc} | [n ts] , [zh i a] _ n .#. , [k oo] _ [ks] , .#. _ {kel} , .#. _ {kl} , {ho} _ n , {respon} _ {nt} , _ [o ks y] , {po} _ [ks p o] , i _ {ntifi} ;
 # Breaking divadelná: a _ l 
@@ -162,6 +163,7 @@ source unicodechars.foma
 regex Stage1 .o.
 Stage2 .o.
 spellSpecialCharacters .o. processSpecialCharacters .o. 
+viachlasException .o. 
 deExceptions .o. diiExceptions .o. diExceptions .o. 
 neExceptions .o. niiExceptions .o. niExceptions .o. 
 teExceptions .o. tiExceptions .o. tiiExceptions .o. 
