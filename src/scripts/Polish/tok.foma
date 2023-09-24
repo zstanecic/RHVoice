@@ -1,4 +1,5 @@
-# Copyright (C) 2021 - 2022 Grzegorz Zlotowicz  <grzezlo@gmail.com>
+# Copyright (C) 2021 - 2023 Grzegorz Zlotowicz  <grzezlo@gmail.com>
+# Copyright (C) 2021 - 2023 Zvonimir Stanecic  <zvonimirek222@yandex.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -60,8 +61,9 @@ define Letter a|A|ą|Ą|b|B|c|C|ć|Ć|d|D|e|E|ę|Ę|f|F|g|G|h|H|i|I|j|J|k|K|l|L|
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
+define PlusOrMinus %+|%-;
 
-define UnformattedNumber (%-) [Digit Digit*] ;
+define UnformattedNumber [Digit Digit*] ;
 define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
 define Number DecimalNumber | UnformattedNumber;
 
@@ -74,7 +76,10 @@ Word @-> ... word || _ .#. | \Letter ,,
 
 define Stage2 
 word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
-num -> dig || Digit^15 _ ;
+num -> dig || Digit^16 _ ;
+
+define TagPlusOrMinusSigns 
+sym -> sign || [sym|.#.] PlusOrMinus _ Digit ; 
 
 define Stage3 
 word -> lseq || .#.  [y|Y|ó|Ó] _ ;
@@ -84,4 +89,5 @@ source unicodechars.foma
 regex UnicodeToNativeTranslitTok .o.
 Stage1 .o.
 Stage2 .o. 
+TagPlusOrMinusSigns .o. 
 Stage3;
