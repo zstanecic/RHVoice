@@ -15,11 +15,7 @@
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
-define Number (%+) (%-) [ %0|[ NZDigit Digit^<16]];
-
-define InsertPlus %+ @-> plus || _ ;
-
-define InsertMinus %- @-> mínus || _ ;
+define Number [ %0|[ NZDigit Digit^<16]];
 
 define InsertThousands 
 [..] -> tisíc || Digit _ Digit^3 .#.;
@@ -122,6 +118,4 @@ RemoveOne .o.
 Fix31Tys  .o.
 Fix32Tys  .o.
 Fix33Tys  .o.
-Fix34Tys  .o.
-InsertPlus .o.
-InsertMinus ;
+Fix34Tys ;
