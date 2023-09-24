@@ -16,12 +16,11 @@
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
-define UnformattedNumber (%-) [ Digit Digit^<16];
+define UnformattedNumber [ Digit Digit^<16];
 define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
 define Number DecimalNumber | UnformattedNumber;
 
 
-define InsertMinus %- @-> mínus || _ ;
 define InsertDot %. @-> bodka || _ ;
 define InsertComma %, @-> čiarka || _ ;
 
@@ -135,4 +134,4 @@ Fix31Tys  .o.
 Fix32Tys  .o.
 Fix33Tys  .o.
 Fix34Tys  .o.
-InsertMinus .o. InsertDot .o. InsertComma ;
+InsertDot .o. InsertComma ;
