@@ -76,7 +76,6 @@ define Letter a|A|ä|Ä|á|Á|b|B|c|C|č|Č|d|D|ď|Ď|e|E|é|É|ě|Ě|f|F|g|G|h|
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
-define PlusOrMinus %+|%-;
 
 define UnformattedNumber [Digit Digit*] ;
 define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
@@ -89,17 +88,14 @@ Number @-> ... num || _ ,,
 Word @-> ... word || _ .#. | \Letter ,, 
 \[Letter | Digit] @-> ... sym || _ ; 
 
-define TagPlusOrMinusSigns 
-sym -> sign || [sym|.#.] PlusOrMinus _ Digit ; 
-
 define Stage2 
 word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
+sym -> num || [sym|.#.] %- _ Digit ,,
 num -> dig || Digit^16 _ ;
 
 source unicodechars.foma
 
 regex UnicodeToNativeTranslitTok .o. 
 Stage1 .o.
-TagPlusOrMinusSigns .o. 
 Stage2 ; 
 

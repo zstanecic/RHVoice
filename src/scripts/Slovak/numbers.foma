@@ -21,6 +21,7 @@ define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
 define Number DecimalNumber | UnformattedNumber;
 
 
+define InsertMinus %- @-> mínus || _ ;
 define InsertDot %. @-> bodka || _ ;
 define InsertComma %, @-> čiarka || _ ;
 
@@ -118,7 +119,7 @@ jeden -> 0 || [.#. | %, | %.]|GroupName _ miliarda,,
 jeden -> 0 || [.#. | %, | %.]|GroupName _ bilión ; 
 
 regex 
-Number .o. 
+InsertMinus | Number .o.
 Insertzeros .o. 
 InsertThousands .o. 
 InsertMillions .o. 
