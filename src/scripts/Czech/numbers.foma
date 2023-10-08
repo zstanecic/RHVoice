@@ -13,11 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+define ProcNumChar [ %-:mínus ] ;
+
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
 define Number [ %0|[ NZDigit Digit^<16]];
-
-define InsertMinus %- @-> mínus || _ ;
 
 define InsertThousands 
 [..] -> tisíc || Digit _ Digit^3 .#.;
@@ -105,8 +105,7 @@ jedna -> 0 || .#.|GroupName _ milión,,
 jedna -> 0 || .#.|GroupName _ miliárda,, 
 jedna -> 0 || .#.|GroupName _ bilión ; 
 
-regex 
-InsertMinus | Number .o.
+define ProcNumber Number .o. 
 InsertThousands .o. 
 InsertMillions .o. 
 InsertBillions .o. 
@@ -121,3 +120,5 @@ Fix31Tys  .o.
 Fix32Tys  .o.
 Fix33Tys  .o.
 Fix34Tys  ;
+
+regex ProcNumChar | ProcNumber;
