@@ -92,6 +92,7 @@ define Stage2
 word -> lseq || [.#.|word|num|sym] LetterSequence _ ,, 
 sym -> num || [sym|.#.] %- _ Digit,
 num DecimalSeparator _ Digit+,,
+Digit num %€ _ ,,
 num -> dig || Digit^16 _ ;
 
 define Stage3 
