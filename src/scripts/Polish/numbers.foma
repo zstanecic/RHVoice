@@ -14,13 +14,14 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # thanks to Beqa Gozalishwili for the processing of 1000, 1000000, 1000000000 and such digits
 
+define ProcNumChar [ %-:minus ] ;
+
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
 define UnformattedNumber [ Digit Digit^<16];
 define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
 define Number DecimalNumber | UnformattedNumber;
 
-define InsertMinus %- @-> minus || _ ;
 define InsertDot %. @-> kropka || _ ;
 define InsertComma %, @-> przecinek || _ ;
 
@@ -75,8 +76,7 @@ jeden -> 0 || [.#. | %. | %,] | GroupName _ milion,,
 jeden -> 0 || [.#. | %. | %,] | GroupName _ miliard,, 
 jeden -> 0 || [.#. | %. | %,] | GroupName _ bilion ; 
 
-regex 
-InsertMinus | Number .o. 
+define ProcNumber Number .o. 
 Insertzeros .o. 
 InsertThousands .o. 
 InsertMillions .o. 
@@ -88,3 +88,5 @@ FixCase .o.
 RemoveOne .o.
 Fix31Tys  .o.
 InsertDot .o. InsertComma ;
+
+regex ProcNumChar | ProcNumber;
