@@ -14,22 +14,21 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # thanks to Beqa Gozalishwili for the processing of 1000, 1000000, 1000000000 and such digits
 
-define ProcNumChar [ %-:minus ] ;
+define ProcNumChar [ %-:minus |
+%.: kropka |
+%,: przecinek ] ;
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
 define UnformattedNumber [ Digit Digit^<16];
-define DecimalNumber [UnformattedNumber] [Digit | [%. Digit] | [%, Digit]]+ ;
-define Number DecimalNumber | UnformattedNumber;
+define Number  UnformattedNumber;
 
-define InsertDot %. @-> kropka || _ ;
-define InsertComma %, @-> przecinek || _ ;
 
 define Insertzeros 
-[%0] -> zero || [ .#. | %, | %. | [[.#. | %, | %.] %0+]] _ ;
+[%0] -> zero || [ .#. | [.#. %0+]] _ ;
 
 define InsertThousands 
-[..] -> tysięcy || Digit _ Digit^3 [.#. | %. | %,] ;
+[..] -> tysięcy || Digit _ Digit^3 .#.  ;
 
 define InsertMillions 
 [..] -> milionów || Digit _ Digit^3 tysięcy;
@@ -71,10 +70,10 @@ sto|dwieście|trzysta|czterysta|pięćset|sześset|
 siedemset|osiemset|dziewięćset] jeden _ ;
 
 define RemoveOne 
-jeden -> 0 || [.#. | %. | %,] | GroupName _ tysiąc,, 
-jeden -> 0 || [.#. | %. | %,] | GroupName _ milion,, 
-jeden -> 0 || [.#. | %. | %,] | GroupName _ miliard,, 
-jeden -> 0 || [.#. | %. | %,] | GroupName _ bilion ; 
+jeden -> 0 || .#. | GroupName _ tysiąc,, 
+jeden -> 0 || .#. | GroupName _ milion,, 
+jeden -> 0 || .#.  | GroupName _ miliard,, 
+jeden -> 0 || .#. | GroupName _ bilion ; 
 
 define ProcNumber Number .o. 
 Insertzeros .o. 
@@ -86,7 +85,6 @@ RemoveSkippedParts .o.
 DigitsToWords .o. 
 FixCase .o. 
 RemoveOne .o.
-Fix31Tys  .o.
-InsertDot .o. InsertComma ;
+Fix31Tys;
 
 regex ProcNumChar | ProcNumber;
