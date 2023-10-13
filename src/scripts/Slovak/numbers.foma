@@ -16,6 +16,7 @@
 
 define ProcNumChar [ %-:mínus |
 %€: eur |
+%+: plus |
 %.: bodka |
 %,: čiarka ] ;
 
