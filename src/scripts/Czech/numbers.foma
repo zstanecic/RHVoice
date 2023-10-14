@@ -114,6 +114,7 @@ jedna -> 0 || .#.  | GroupName _ miliárda,,
 jeden -> 0 || .#. | GroupName _ bilión ; 
 
 define ProcNumber Number .o. 
+Insertzeros .o. 
 InsertThousands .o. 
 InsertMillions .o. 
 InsertBillions .o. 
