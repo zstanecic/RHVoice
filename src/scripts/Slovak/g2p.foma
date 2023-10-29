@@ -83,7 +83,7 @@ define spellSpecialCharacters [
 ] @-> || .#. _ .#. ;
 
 define processSpecialCharacters [
-[ä]: [ae] | 
+[ä]: [e] | 
 [ů]: [uu] 
 ] @-> || _ ;
 
