@@ -128,6 +128,8 @@ pau k a n d i d aa t pau
 pau k a n d i z o v a n aa pau 
 pau k a zh d e j pau 
 pau k a zh d o p aa d nj e pau 
+pau k lj i n i c k aa pau 
+pau k lj i n i k a pau 
 pau k lj uu ts n a k o s tj pau 
 pau k o g n i t ii v n e j pau 
 pau k o h uu tj e j pau 
@@ -136,7 +138,7 @@ pau k o m p a t i b i l n yy pau
 pau k o n d ii c i a pau 
 pau k o n e k t o r pau 
 pau k o n k r ee t nj e pau 
-pau k o n sh t i t u tj ii v n e m u pau 
+pau k o n sh t i t u t ii v n e m u pau 
 pau k o n z i s t e n c i a pau 
 pau k oo d e k s pau 
 pau k r e d e n c pau 
@@ -355,6 +357,11 @@ pau t r oo nj i l pau
 pau t u r n i k e t pau 
 pau t v o r i v o s tj i pau 
 pau u lj a hh ts u j e pau 
+pau u nj i k a tj pau 
+pau u nj i k aa pau 
+pau u n i k aa t pau 
+pau u nj i k nj e pau 
+pau u nj i k n uu tj pau 
 pau u p r i a m e n e j pau 
 pau u r ts i t e j pau 
 pau u s k u t o ts nj u j uu pau 
