@@ -352,3 +352,12 @@
 [submodule "data/voices/karmela"]
 	path = data/voices/karmela
 	url = https://github.com/RHVoice/karmela-hrv.git
+[submodule "data/languages/Hungarian"]
+	path = data/languages/Hungarian
+	url = https://github.com/zstanecic/hungarian-bin.git
+[submodule "data/voices/anna-hun"]
+	path = data/voices/anna-hun
+	url = https://github.com/zstanecic/anna-hun.git
+[submodule "data/voices/katalin-hun"]
+	path = data/voices/katalin-hun
+	url = https://github.com/zstanecic/katalin-hun.git
