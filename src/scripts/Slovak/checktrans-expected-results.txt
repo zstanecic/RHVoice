@@ -25,6 +25,7 @@ pau b r i t aa n i e pau
 pau b u dj e j o v ii c pau 
 pau c e l o s v e t o v yy pau 
 pau c i v i lj i z o v a n e j pau 
+pau ts i n o r o d e j pau 
 pau d a n e j pau 
 pau d aa v n i pau 
 pau dj e c i e k pau 
@@ -194,6 +195,7 @@ pau n aa k l a dj i a k s o s o b n yy m a u t o m pau
 pau n a s m e r o v a tj pau 
 pau n a s t a v e nj ii pau 
 pau n a s t a v o v a nj ii pau 
+pau n aa dj e j pau 
 pau n aa m o r n ii pau 
 pau nj e a s e r t ii v n y pau 
 pau nj e g r a m o t n yy pau 
@@ -425,6 +427,8 @@ pau z e n i t o m pau
 pau z h a b a n e j pau 
 pau z i n t e n z ii v nj e n e j pau 
 pau z l a t e j pau 
+pau z l o dj e j pau 
+pau z l o dj e j a pau 
 pau z o t p o v e d n ii pau 
 pau z o s t r i h a n e j pau 
 pau z o sh t aa t nj e n e j pau 
