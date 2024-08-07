@@ -40,7 +40,7 @@ public final class ImportConfigService extends IntentService {
     private void importUserDict(Intent intent) {
         final DocumentFile inFile = DocumentFile.fromSingleUri(this, intent.getData());
         final String lang = intent.getStringExtra(EXTRA_LANGUAGE);
-        final File outDir = Config.getLangDictsDir(this, lang);
+        final File outDir = Config.getLangDictsDir(MyApplication.getStorageContext(), lang);
         outDir.mkdirs();
         final File outFile = new File(outDir, inFile.getName());
         try (InputStream in = getContentResolver().openInputStream(intent.getData());
@@ -50,12 +50,12 @@ public final class ImportConfigService extends IntentService {
             outFile.delete();
             return;
         }
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
     }
 
     private void importConfigFile(Intent intent) {
-        final DocumentFile inFile = DocumentFile.fromSingleUri(this, intent.getData());
-        final File outFile = Config.getConfigFile(this);
+        final DocumentFile inFile = DocumentFile.fromSingleUri(MyApplication.getStorageContext(), intent.getData());
+        final File outFile = Config.getConfigFile(MyApplication.getStorageContext());
         outFile.getParentFile().mkdirs();
         try (InputStream in = getContentResolver().openInputStream(intent.getData());
              FileOutputStream out = new FileOutputStream(outFile)) {
@@ -64,7 +64,7 @@ public final class ImportConfigService extends IntentService {
             outFile.delete();
             return;
         }
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
     }
 
     @Override

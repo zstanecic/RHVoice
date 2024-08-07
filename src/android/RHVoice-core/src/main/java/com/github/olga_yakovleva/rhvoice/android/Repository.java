@@ -17,6 +17,7 @@ package com.github.olga_yakovleva.rhvoice.android;
 
 import android.content.Context;
 import android.os.SystemClock;
+//import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.MainThread;
@@ -70,7 +71,7 @@ final class Repository {
 
     @MainThread
     private Repository(Context context) {
-        this.context = context.getApplicationContext();
+        this.context = context;
         try {
             {
                 engine = new TTSEngine("", Config.getDir(this.context).getAbsolutePath(), new String[0], PackageClient.getPath(this.context), CoreLogger.instance);
@@ -179,6 +180,8 @@ final class Repository {
 
     private void scheduleUpdates() {
         final PackageDirectory dir = getPackageDirectory();
+        //PreferenceManager preferenceManager = getPreferenceManager();
+        //preferenceManager.setStorageDeviceProtected();
         final SharedPreferences prefs = context.getSharedPreferences("dir", 0);
         final long newTtl = dir.ttl;
         final long oldTtl = prefs.getLong("ttl", 0);

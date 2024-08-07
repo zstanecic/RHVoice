@@ -76,12 +76,12 @@ public final class VoiceListAdapter extends RecyclerView.Adapter<VoiceViewHolder
     }
 
     private String getVersionString(VoicePack voice) {
-        if (!voice.getEnabled(activity))
+        if (!voice.getEnabled(MyApplication.getStorageContext()))
             return null;
-        final Version ver = voice.getInstalledVersion(activity);
+        final Version ver = voice.getInstalledVersion(MyApplication.getStorageContext());
         if (ver == null)
             return null;
-        final Version langVer = voice.getLanguage().getInstalledVersion(activity);
+        final Version langVer = voice.getLanguage().getInstalledVersion(MyApplication.getStorageContext());
         if (langVer == null)
             return ver.toString();
         return (ver.toString() + "." + langVer.toString());
@@ -128,7 +128,7 @@ public final class VoiceListAdapter extends RecyclerView.Adapter<VoiceViewHolder
         if ((flags & VoiceViewChange.NAME) != 0)
             vh.nameView.setText(voice.getName());
         if ((flags & VoiceViewChange.INSTALLED) != 0) {
-            Spanned attrib = voice.getAttribution(activity);
+            Spanned attrib = voice.getAttribution(MyApplication.getStorageContext());
             vh.attribView.setVisibility(attrib == null ? View.GONE : View.VISIBLE);
             if (attrib != null) {
                 vh.attribView.setText(attrib);
@@ -137,9 +137,9 @@ public final class VoiceListAdapter extends RecyclerView.Adapter<VoiceViewHolder
             vh.versionView.setVisibility(ver == null ? View.GONE : View.VISIBLE);
             if (ver != null)
                 vh.versionView.setText(ver);
-            boolean enabled = voice.getEnabled(activity);
-            boolean installed = voice.isInstalled(activity);
-            boolean upToDate = voice.isUpToDate(activity);
+            boolean enabled = voice.getEnabled(MyApplication.getStorageContext());
+            boolean installed = voice.isInstalled(MyApplication.getStorageContext());
+            boolean upToDate = voice.isUpToDate(MyApplication.getStorageContext());
             if (enabled && !upToDate)
                 vh.progressBar.setVisibility(View.VISIBLE);
             else

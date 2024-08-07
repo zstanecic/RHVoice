@@ -42,7 +42,7 @@ public final class CheckTTSData extends Activity {
             boolean installed = false;
             boolean notInstalled = false;
             for (VoicePack voice : accent.getVoices()) {
-                if (voice.getEnabled(this) && voice.isUpToDate(this))
+                if (voice.getEnabled(MyApplication.getStorageContext()) && voice.isUpToDate(MyApplication.getStorageContext()))
                     installed = true;
                 else
                     notInstalled = true;
@@ -56,7 +56,7 @@ public final class CheckTTSData extends Activity {
             if (notInstalled)
                 notInstalledLanguages.add(tag);
         }
-        dm.scheduleSync(this, false);
+        dm.scheduleSync(MyApplication.getStorageContext(), false);
     }
 
     @Override

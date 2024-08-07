@@ -60,8 +60,10 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
 
 
     private void buildLanguagePreferenceCategory(PreferenceCategory cat0, LanguagePack lp, List<VoicePack> voices) {
-        Context ctx = getPreferenceManager().getContext();
-        PreferenceScreen cat = getPreferenceManager().createPreferenceScreen(ctx);
+        Context ctx = MyApplication.getStorageContext();
+        PreferenceManager preferenceManager = getPreferenceManager();
+        preferenceManager.setStorageDeviceProtected();
+        PreferenceScreen cat = preferenceManager.createPreferenceScreen(ctx);
         cat.setPersistent(false);
         String firstVoiceName = voices.get(0).getName();
         String code3 = lp.getCode();
@@ -128,6 +130,8 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
 
     @Override
     public void onCreatePreferences(Bundle state, String rootKey) {
+        PreferenceManager preferenceManager = getPreferenceManager();
+        preferenceManager.setStorageDeviceProtected();
         setPreferencesFromResource(R.xml.settings, null);
         findPreference("version").setSummary(BuildConfig.VERSION_NAME);
         if (openConfigFile != null) {
@@ -139,11 +143,11 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
         PreferenceCategory cat = null;
         final DataManager dm = Repository.get().createDataManager();
         for (LanguagePack lp : dm.iterLanguages()) {
-            final List<VoicePack> voices = lp.iterVoices().filter(v -> v.getEnabled(requireContext()) && v.isInstalled(requireContext())).toList();
+            final List<VoicePack> voices = lp.iterVoices().filter(v -> v.getEnabled(MyApplication.getStorageContext()) && v.isInstalled(MyApplication.getStorageContext())).toList();
             if (voices.isEmpty())
                 continue;
             if (cat == null) {
-                cat = new PreferenceCategory(getPreferenceManager().getContext());
+                cat = new PreferenceCategory(MyApplication.getStorageContext());
                 cat.setOrder(100);
                 cat.setKey("languages");
                 cat.setTitle(R.string.languages);
@@ -165,19 +169,19 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if ("wifi_only".equals(key))
-            Repository.get().createDataManager().scheduleSync(requireActivity(), true);
+            Repository.get().createDataManager().scheduleSync(MyApplication.getStorageContext(), true);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(this);
+        PreferenceManager.getDefaultSharedPreferences(MyApplication.getStorageContext()).registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).unregisterOnSharedPreferenceChangeListener(this);
+        PreferenceManager.getDefaultSharedPreferences(MyApplication.getStorageContext()).unregisterOnSharedPreferenceChangeListener(this);
     }
 
     private void onUserDictSelected(Uri uri) {
@@ -232,7 +236,7 @@ public final class SettingsFragment extends PreferenceFragmentCompat implements 
             openConfigFile.launch(new String[]{"*/*"});
             return false;
         } else {
-            Config.getConfigFile(requireActivity()).delete();
+            Config.getConfigFile(MyApplication.getStorageContext()).delete();
             LocalBroadcastManager.getInstance(requireActivity()).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
             return true;
         }
