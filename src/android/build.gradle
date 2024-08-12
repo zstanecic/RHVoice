@@ -16,10 +16,10 @@ allprojects {
     }
 
     ext.myMinSdkVersion = 21
-    ext.myCompileSdkVersion = 34
-    ext.myBuildToolsVersion = '34.0.0'
+    ext.myCompileSdkVersion = 33
+    ext.myBuildToolsVersion = '33.0.0'
     ext.myNdkVersion = '25.1.8937393'
-    ext.myTargetSdkVersion = 34
+    ext.myTargetSdkVersion = 33
 }
 
 if (hasProperty("RHVoice.signRelease")) {
