@@ -50,13 +50,13 @@ w:v |
 v:v2 | 
 y:ih | 
 z:z | 
-ź:zi ;
+ź:zi ; 
 #q and ż processed later.
 
 define Stage1 InitialTranscribe @-> ;
 
-define VowelPhonem [a | on | e | en | i | o | u | ih ] ;
-define ConsonantPhonem [b|c|ch|ci|d|dz|dzi|dzh|f|g|h|y|k|l|w|m|n|ni|p|r|s|sh|si|t|v|z|zi|zh] ;
+define VowelPhonem [a | on | e | en | i | o | u | ih ] ; 
+define ConsonantPhonem [b|c|ch|ci|d|dz|dzi|dzh|f|g|h|y|k|l|w|m|n|ni|p|r|s|sh|si|t|v|z|zi|zh] ; 
 
 define processMultigraphs1 
 #Convert rz to virtual "rz" phonem, later backconverted to r and z.
@@ -80,7 +80,7 @@ e _ a t z ,
 #podżarcie, podżółkły, podżuchwowa, podżyrować:
 {po} _ [a|e|u|ih],
 #odżywić, nieodżałowany, niewspółodżywiony, współoskarżyć
-.#. (n i e) (v s p u w) o _ VowelPhonem ;
+.#. (n i e) (v s p u w) o _ VowelPhonem ; 
 
 
 define processMultigraphs2 
@@ -111,19 +111,19 @@ r ih m a _ a,,
 #exceptions from dzh2:
 dzh2 -> dzh ||
 #menadżer:
-m e n a _ e r ;
+m e n a _ e r ; 
 
 define processMultigraphs3 
 #Convert virtual rz from multigraphs1 to r z phonemes:
 rz @-> r z || _ ,,
 #dzh2 to d zh:
-dzh2 @-> d zh || _ ;
+dzh2 @-> d zh || _ ; 
 
 define SofteningConsonantPhonem [c|ch|f|h|k|p|s|sh|si|t] ;
 define Softening [
 v:f|
 z: s|
-zh:sh] ;
+zh:sh] ; 
 
 define FlagExceptions 
 #antyatom, antyenergetyczny, antyimport, antyoksydant, antyustrojowy:
@@ -196,8 +196,7 @@ n _ b ,,
 #xie na ksie:
 x i e @-> k si e || _ ,,
 #quasi:
-q u a s i @-> k f a zi2 || _ ;
-
+q u a s i @-> k f a zi2 || _ ; 
 
 define UnflagExceptions [
 dz2:[d z] |
@@ -208,7 +207,7 @@ si2: [s i] |
 v2 : v |
 ih2: ih |
 zi2:[z i] |
-zh2:zh ] @-> || _ ;
+zh2:zh ] @-> || _ ; 
 
 define Stage2 
 Softening @-> || SofteningConsonantPhonem _ ,
