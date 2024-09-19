@@ -16,8 +16,8 @@ task BoostIncludes(type: Exec) {
 android {
     compileOptions {
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     compileSdk myCompileSdkVersion
@@ -110,6 +110,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.documentfile:documentfile:1.0.1'
+    implementation "androidx.savedstate:savedstate:1.2.1"
+    implementation "androidx.savedstate:savedstate-ktx:1.2.1"
 
     def lifecycle_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
