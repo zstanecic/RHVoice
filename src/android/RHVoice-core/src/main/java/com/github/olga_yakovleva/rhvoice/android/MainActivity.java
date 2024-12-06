@@ -37,7 +37,7 @@ public final class MainActivity extends AppCompatActivity implements AvailableLa
 
     private void onPackageDirectory(PackageDirectory dir) {
         dm.setPackageDirectory(dir);
-        dm.scheduleSync(this, false);
+        dm.scheduleSync(MyApplication.getStorageContext(), false);
     }
 
     public void onAccentSelected(VoiceAccent accent) {
@@ -51,8 +51,8 @@ public final class MainActivity extends AppCompatActivity implements AvailableLa
     }
 
     public void onVoiceSelected(VoicePack voice, boolean state) {
-        if (state || !voice.isInstalled(this)) {
-            voice.setEnabled(this, state);
+        if (state || !voice.isInstalled(MyApplication.getStorageContext())) {
+            voice.setEnabled(MyApplication.getStorageContext(), state);
             AvailableVoicesFragment frag = (AvailableVoicesFragment) (getSupportFragmentManager().findFragmentByTag("voices"));
             if (frag != null)
                 frag.refresh(voice, VoiceViewChange.INSTALLED);
@@ -63,7 +63,7 @@ public final class MainActivity extends AppCompatActivity implements AvailableLa
 
     public void onConfirmVoiceRemovalResponse(VoicePack voice, boolean response) {
         if (response) {
-            voice.setEnabled(this, false);
+            voice.setEnabled(MyApplication.getStorageContext(), false);
             AvailableVoicesFragment frag = (AvailableVoicesFragment) (getSupportFragmentManager().findFragmentByTag("voices"));
             if (frag != null)
                 frag.refresh(voice, VoiceViewChange.INSTALLED);

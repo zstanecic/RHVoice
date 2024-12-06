@@ -27,7 +27,7 @@ public class ConfirmNetworkDataWorker extends DataWorker {
 
     @Override
     protected Result doWork(DataPack p) {
-        boolean confirmed = (p.getSyncFlag(getApplicationContext()) == SyncFlags.NETWORK);
+        boolean confirmed = (p.getSyncFlag(MyApplication.getStorageContext()) == SyncFlags.NETWORK);
         if (BuildConfig.DEBUG)
             Log.v(TAG, "Network requirement confirmation result: " + confirmed);
         return confirmed ? Result.success(getInputData()) : Result.failure();

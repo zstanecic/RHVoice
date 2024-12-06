@@ -17,6 +17,8 @@ package com.github.olga_yakovleva.rhvoice.android;
 
 import androidx.multidex.MultiDexApplication;
 
+import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
 import java.security.Provider;
@@ -29,6 +31,7 @@ import org.conscrypt.Conscrypt;
 
 public final class MyApplication extends MultiDexApplication {
     private static final String TAG = "RHVoice.MyApplication";
+    private static Context storageContext;
 
     @Override
     public void onCreate() {
@@ -45,6 +48,18 @@ public final class MyApplication extends MultiDexApplication {
             if (BuildConfig.DEBUG)
                 Log.e(TAG, "Error", e);
         }
-        Repository.initialize(this);
+
+        Context appContext = getApplicationContext();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            MyApplication.storageContext = appContext.createDeviceProtectedStorageContext();
+        }
+        else {
+            MyApplication.storageContext = appContext;
+        }
+        Repository.initialize(MyApplication.storageContext);
+    }
+
+    public static Context getStorageContext() {
+        return MyApplication.storageContext;
     }
 }

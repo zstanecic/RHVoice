@@ -43,13 +43,13 @@ public class DataSyncWorker extends DataWorker implements IDataSyncCallback {
     public void onLanguageInstallation(LanguagePack language) {
         Intent event = new Intent(ACTION_LANGUAGE_INSTALLED);
         event.putExtra("name", language.getName());
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(event);
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(event);
     }
 
     public void onLanguageRemoval(LanguagePack language) {
         Intent event = new Intent(ACTION_LANGUAGE_REMOVED);
         event.putExtra("name", language.getName());
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(event);
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(event);
     }
 
     public void onVoiceDownloadStart(VoicePack voice) {
@@ -59,19 +59,19 @@ public class DataSyncWorker extends DataWorker implements IDataSyncCallback {
     public void onVoiceDownloadDone(VoicePack voice) {
         Intent event = new Intent(ACTION_VOICE_DOWNLOADED);
         event.putExtra("name", voice.getName());
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(event);
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(event);
     }
 
     public void onVoiceInstallation(VoicePack voice) {
         Intent event = new Intent(ACTION_VOICE_INSTALLED);
         event.putExtra("name", voice.getName());
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(event);
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(event);
     }
 
     public void onVoiceRemoval(VoicePack voice) {
         Intent event = new Intent(ACTION_VOICE_REMOVED);
         event.putExtra("name", voice.getName());
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(event);
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(event);
     }
 
     public final boolean isTaskStopped() {
@@ -83,15 +83,15 @@ public class DataSyncWorker extends DataWorker implements IDataSyncCallback {
     }
 
     protected final boolean doSync(DataPack p) {
-        boolean done = p.sync(getApplicationContext(), this);
+        boolean done = p.sync(MyApplication.getStorageContext(), this);
         if (done)
-            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(new Intent(RHVoiceService.ACTION_CHECK_DATA));
+            LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(new Intent(RHVoiceService.ACTION_CHECK_DATA));
         return done;
     }
 
     @Override
     protected Result doWork(DataPack p) {
         doSync(p);
-        return (p.getSyncFlag(getApplicationContext()) != SyncFlags.LOCAL) ? Result.success(getInputData()) : Result.retry();
+        return (p.getSyncFlag(MyApplication.getStorageContext()) != SyncFlags.LOCAL) ? Result.success(getInputData()) : Result.retry();
     }
 }

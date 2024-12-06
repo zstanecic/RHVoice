@@ -40,7 +40,7 @@ public final class RemoveUserDictDialogFragment extends AppCompatDialogFragment 
         super.onCreate(state);
         Bundle args = getArguments();
         languageName = args.getString(ARG_LANGUAGE);
-        final File[] dictFiles = Config.getLangDictsDir(requireActivity(), languageName).listFiles();
+        final File[] dictFiles = Config.getLangDictsDir(MyApplication.getStorageContext(), languageName).listFiles();
         if (dictFiles == null)
             userDicts = new String[]{};
         else
@@ -57,9 +57,9 @@ public final class RemoveUserDictDialogFragment extends AppCompatDialogFragment 
     }
 
     private void onDictSelected(DialogInterface dialog, int index) {
-        final File dictFile = new File(Config.getLangDictsDir(getActivity(), languageName), userDicts[index]);
+        final File dictFile = new File(Config.getLangDictsDir(MyApplication.getStorageContext(), languageName), userDicts[index]);
         dictFile.delete();
-        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
+        LocalBroadcastManager.getInstance(MyApplication.getStorageContext()).sendBroadcast(new Intent(RHVoiceService.ACTION_CONFIG_CHANGE));
     }
 
     public static void show(FragmentActivity activity, String langName) {
