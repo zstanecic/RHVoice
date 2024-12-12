@@ -364,3 +364,6 @@
 [submodule "data/voices/seva"]
 	path = data/voices/seva
 	url = https://github.com/RHVoice/seva-rus.git
+[submodule "src/scripts/Hungarian"]
+	path = src/scripts/Hungarian
+	url = https://github.com/zstanecic/hungarian-src.git
