@@ -361,3 +361,6 @@
 [submodule "data/voices/katalin-hun"]
 	path = data/voices/katalin-hun
 	url = https://github.com/zstanecic/katalin-hun.git
+[submodule "data/voices/seva"]
+	path = data/voices/seva
+	url = https://github.com/RHVoice/seva-rus.git
