@@ -5,6 +5,7 @@ pau a f r i k a n i s t i k a pau
 pau a g o n i s t i k a pau 
 pau a k a d e m pau 
 pau a k t ii v n e m u pau 
+pau a k o r d e oo n pau 
 pau a k u s t i k a pau 
 pau a k v a r i s t i c k yy pau 
 pau a k v a r i s t i k a pau 
@@ -17,8 +18,10 @@ pau a n t a r k t ii d y pau
 pau a r g e n t ii n a pau 
 pau a r m aa d n e pau 
 pau a r m e n i s t i k a pau 
+pau a r t i s t pau 
 pau a s e r t i v i t a pau 
 pau a u t e n t i k a pau 
+pau b a j o n e t pau 
 pau b a k t e r i aa l n a pau 
 pau b a lj i s t i k a pau 
 pau b a l k a n i s t i k a pau 
@@ -40,6 +43,7 @@ pau c y n i c k yy pau
 pau ts i n o r o d e j pau 
 pau d a n e j pau 
 pau d aa v n i pau 
+pau d e a k t i v o v a tj pau 
 pau dj e c i e k pau 
 pau d e c i m e t e r pau 
 pau d e f i c i t pau 
@@ -48,9 +52,13 @@ pau d e f o r m u j e pau
 pau d e g r e s ii v n e m u pau 
 pau d e h y d r o v a n e j pau 
 pau dj e j pau 
+pau d e k a pau 
+pau d e k a d e n c i a pau 
 pau d e k e l pau 
 pau d e k l a pau 
 pau d e k oo d o v a n e j pau 
+pau d e k o r a t i v i z m u s pau 
+pau d e k o r t i f i k aa c i a pau 
 pau d e l t a pau 
 pau d e m e n c i a pau 
 pau d e o k s y r i b o n u k lj e o v e j pau 
@@ -84,6 +92,7 @@ pau dj i v a dj e l n uu pau
 pau d i v e r z i f i k aa c i a pau 
 pau d i z e r t a ts n ii pau 
 pau d ii lj e r pau 
+pau d o s t a nj e tj e pau 
 pau d o f t e d a j sh i u pau 
 pau d iir r tj e pau 
 pau d u p lj e k s n e j pau 
@@ -94,7 +103,9 @@ pau e m o t i k o n pau
 pau e m p a t i a pau 
 pau e p i d ee m i a pau 
 pau e p i d e m i o l oo g i a pau 
+pau e s t e r pau 
 pau e s t e t i k a pau 
+pau e sh t e b aa k pau 
 pau e t i oo p s k y pau 
 pau e t n i c k yy pau 
 pau e v a k u aa c i a pau 
@@ -108,6 +119,7 @@ pau f e t i sh pau
 pau f i k t ii v n y pau 
 pau f i l a t e lj i s t i k a pau 
 pau f i n a n c o v a nj ii pau 
+pau f ii ts r o m pau 
 pau f l o t ii l pau 
 pau f o n e t i k a pau 
 pau f o t o g e n i c k yy pau 
@@ -124,6 +136,7 @@ pau h i s p a n i s t i k a pau
 pau h o d e n pau 
 pau h o m o g e n i z o v a n yy pau 
 pau h o t e l pau 
+pau h iir r b o lj a t e j pau 
 pau h iir r d ii pau 
 pau h u m a n i t pau 
 pau h v i e s t pau 
@@ -143,10 +156,13 @@ pau i n f l aa c i a pau
 pau i n t e r nj e pau 
 pau i n t e r n e t pau 
 pau i n t ii m n y pau 
+pau i n t r a n e t pau 
 pau i s tj ii pau 
+pau j a ts m e nj pau 
 pau j a p a n i s t i k a pau 
 pau j e d e n aa s t e j pau 
 pau j e dj e nj i e pau 
+pau j e s e t e r pau 
 pau j o d i ts n e j pau 
 pau k n aa m k v aa m pau 
 pau k nj e j pau 
@@ -155,11 +171,15 @@ pau k a l a n e t i k a pau
 pau k a n d i d aa t pau 
 pau k a n d i z o v a n aa pau 
 pau k a n o n i c k yy pau 
+pau k a r b o n i z aa c i a pau 
+pau k a r t e l pau 
+pau k a t a s t e r pau 
 pau k a zh d e j pau 
 pau k a zh d o p aa d nj e pau 
 pau k i n e m a t i k a pau 
 pau k i n e t i c k aa pau 
 pau k i n e t i k a pau 
+pau k l a r i n e t pau 
 pau k lj i n i c k aa pau 
 pau k lj i n i k a pau 
 pau k lj uu ts n a k o s tj pau 
@@ -198,7 +218,9 @@ pau l o g i s t ii k pau
 pau l o p tj i ts k a pau 
 pau l yy d i a pau 
 pau lj u b o v o lj n e j pau 
+pau m a j s t e r pau 
 pau m a n i p u l o v a tj pau 
+pau m a s t e r pau 
 pau m a sh lj a pau 
 pau m a tj e j pau 
 pau m e t e o pau 
@@ -206,6 +228,7 @@ pau m e dz i n aa r o d n ii pau
 pau m i m o r i a d n e m u pau 
 pau m i m o v l aa d n a pau 
 pau m i n e r aa l pau 
+pau m i n i s t e r pau 
 pau m yy t n e pau 
 pau m lj i e ts n e j pau 
 pau m o d e r n i z o v a n e j pau 
@@ -229,11 +252,13 @@ pau n a s t a v o v a nj ii pau
 pau n a u t i k a pau 
 pau n aa dj e j pau 
 pau n aa m o r n ii pau 
+pau n e a p o l pau 
 pau nj e a s e r t ii v n y pau 
 pau nj e g r a m o t n yy pau 
 pau n e h e m i aa sh o v a pau 
 pau nj e h y g i e n i c k yy pau 
 pau nj e hh pau 
+pau n e k t aa r pau 
 pau nj e o d i sh lj i pau 
 pau n e p aa l pau 
 pau nj e p o t v iir r dj e n ee pau 
@@ -243,6 +268,7 @@ pau nj e s m i e sh pau
 pau nj e s p o lj i t i z o v a n e j pau 
 pau nj e s v o j a pau 
 pau n e t pau 
+pau nj e tj e r pau 
 pau nj e u r o b ii tj e pau 
 pau nj e u r o dj i l o pau 
 pau n e u r o t i c i z m u s pau 
@@ -272,6 +298,7 @@ pau p a nj e j pau
 pau p a n i c k yy pau 
 pau p a n i k a pau 
 pau p a r tj i ts k a pau 
+pau p a r t ii c i a pau 
 pau p a t e t i c k yy pau 
 pau p a t e t i k a pau 
 pau p e d i a t e r pau 
@@ -286,6 +313,7 @@ pau p l a s t i k a pau
 pau p l a t o n i c k yy pau 
 pau p n e u m a t i c k e j pau 
 pau p o d d i m e n z o v a n e j pau 
+pau p o d nj e t pau 
 pau p o d u j a tj ii pau 
 pau p o f i d ee r n i pau 
 pau p o l aa r n e h o pau 
@@ -302,6 +330,7 @@ pau p o v i n nj e pau
 pau p o f sh i m n uu tj pau 
 pau p o z o r o v a nj ii pau 
 pau p oo d i u m pau 
+pau p r a ts l o v e k pau 
 pau p r a k t i z o v a tj pau 
 pau p r a k t i z u j e pau 
 pau p r a n o s t i k a pau 
@@ -330,10 +359,12 @@ pau p r o t e o s y n t ee z a pau
 pau p r o t e t i k a pau 
 pau p r o tj i k l a t pau 
 pau p r o tj i k o r u p c i a pau 
+pau p r o tj i s t r a n a pau 
 pau p iir r s nj ii k pau 
 pau p s y hh o t e r a p i a pau 
 pau r a d i aa n pau 
 pau r a t i f i k o v a n e j pau 
+pau r e g i s t e r pau 
 pau r e p e t e pau 
 pau r e p e t ii c i a pau 
 pau r e s p o n d e n t pau 
@@ -360,7 +391,9 @@ pau s e k s i s t i c k yy pau
 pau s hh i z o f r e n i c k yy pau 
 pau s k a p a n e j pau 
 pau s k uu t e r pau 
+pau s lj e ts n a pau 
 pau s l o nj i c a pau 
+pau s l o v a n i z o v a tj pau 
 pau s l o v e n i s t i k a pau 
 pau s m ae d n ii pau 
 pau s n a h a pau 
@@ -375,14 +408,18 @@ pau s t a t i k a pau
 pau s t a u pau 
 pau s t a u b a pau 
 pau s t aa u k a pau 
+pau s t e r e o pau 
 pau s t o u k a pau 
 pau s t r e dj i s k o pau 
 pau s u t e r ee n pau 
 pau s uu ts a s n e j pau 
 pau s uu d n e h o pau 
+pau s v ae t e j pau 
 pau s y m p a t i a pau 
 pau s y m p a t i k a pau 
 pau s y n e r g i a pau 
+pau sh a l a b a hh t e r pau 
+pau sh e d e j pau 
 pau sh e s dj dj e s i a d j e d e n pau 
 pau sh i e s t e pau 
 pau sh i e s t e j pau 
@@ -457,6 +494,7 @@ pau uu nj i k pau
 pau v a tj i ts i e k pau 
 pau v e t e r aa n pau 
 pau v e t e r i n a pau 
+pau v e tj e r n aa pau 
 pau v i a c h l a s n yy pau 
 pau v i dj e nj i e pau 
 pau v i r t u oo s pau 
@@ -477,6 +515,8 @@ pau z a ts a tj i e pau
 pau z a nj e p r aa z d nj e n yy pau 
 pau z a p o zh i ts a n e j pau 
 pau z a t e lj e f o n o v a n e j pau 
+pau z aa s tj e r a pau 
+pau z aa s tj e r k a pau 
 pau z d e n a pau 
 pau z d e nj e k pau 
 pau z d e n k a pau 
