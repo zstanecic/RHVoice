@@ -83,17 +83,17 @@ define spellSpecialCharacters [
 [ä]: [p r e h l a s o v a n ee aa] | 
 [ě]: [ee z m e k ts e nj o m] |
 [ů]: [uu s k r uu sh k o m] 
-] @-> || .#. _ .#. ;
+] @-> || .#. _ .#. ; 
 
 define processSpecialCharacters [
 [ä]: [ae] | 
 [ů]: [uu] 
 ] @-> || _ ;
 
-define ShortVowelPhonem [a | e | i | o | u | y | ae ] ;
-define LongVowelPhonem [aa | ee | ije | ii | oo | uo | uu | ou | yy | iil1 | iir1 | ax1 ] ;
-define VowelPhonem ShortVowelPhonem | LongVowelPhonem ;
-#define ConsonantPhonem [b|c|ts|d|dj|dz|dzh|f|g|h|hh|j|k|l|lj|m|n|nj|p|r|rz|s|sh|t|tj|v|z|zh|vdp|vdt] ;
+define ShortVowelPhonem [a | e | i | o | u | y | ae ] ; 
+define LongVowelPhonem [aa | ee | ije | ii | oo | uo | uu | ou | yy | iil1 | iir1 | ax1 ] ; 
+define VowelPhonem ShortVowelPhonem | LongVowelPhonem ; 
+#define ConsonantPhonem [b|c|ts|d|dj|dz|dzh|f|g|h|hh|j|k|l|lj|m|n|nj|p|r|rz|s|sh|t|tj|v|z|zh|vdp|vdt] ; 
 # Todo: should lj also be a voiced consonant for assimilation?
 define VoicedConsonantPhonem [j|b|d|dj|dz|dzh|g|h|z|zh|v|m|n|nj|l|r] ; 
 define VoicelessConsonantPhonem [p|t|tj|c|ts|k|hh|s|sh|f|vdp|vdt|vdtj|vdc|vdts|vdk|vdhh|vds|vdsh|vdf] ; 
@@ -135,18 +135,18 @@ define tiForeignExceptions [t i] @-> [ŧti] || [rz ?*] _ , _ [?* rz] ;
 define tiiExceptions [t ii] @-> [ŧtii] || {preven} _ v , {detek} | {dif} | {ek} | {sensi} | {vyknu} _ , {teris} _ k , _ {mov} , a | {ak} | {alterna} | {audi} | {defini} | i | [k o n sh t r u k] | {mo} | {nega} | {produk} | {spek} | [t u] _ v , .#. {jus} | {pales} _ , {or} _ m , {ales} _ t , .#. _ [m .#.] | {mo} | {mu} , {hnu} | {li} _ .#. , .#. _ .#. | {to} .#. , {kris} _ n , _ [ŧne dzh] , {pe} _ {ci} , [ŧni] _ , _ {mea} | {mei} | [m e ii] | [m e aa m] | [m e u] | [m e aa hh] | {meou} | {meami} , .#. _ m , {legi} _ m , {adap} _ v , .#. {in} _ m , [ŧde ŧte k] _ v , {argen} _ n , [hh a r a k ŧte r i s] _ k , [z zh i] _ , {aser} _ v , [ks e k u] _ , {antark} _ d , [k o n sh] _ {nopo} , [ŧde n] _ t , {boha} _ .#. , [p r e ŧdi k] _ v , {poli} _ k , {fik} _ v , {opi} | {pripi} | {prepi} | {spi} | {spros} _ .#. , {repe} _ , [k o n sh ŧti t u] _ v , {is} _ k .#. , tikapart1 _ [k .#.] , tikapart2 _ [k .#.] , {flo} | {tor} _ l , {par} _ c ; 
 # These tii rules are questionable: {os} _ k , breaks podujatí {ja} _ .#. , 
 define rules [d i]:[dj i] | [t i]:[tj i] | [n i]:[nj i] | [l ii]:[lj ii] | [l i]:[lj i] | [d e]:[dj e] | [t e]:[tj e] | [n e]:[nj e] | [l e]:[lj e] | [d ii]:[dj ii] | [n ii]:[nj ii] | [t ii]:[tj ii] ; 
-define exceptionsEnd [ŧde] @-> [d e] || _ ,, [ŧdii] @-> [d ii] || _ ,, [ŧdi] @-> [d i] || _ ,, [ŧne] @-> [n e] || _ ,, [ŧnii] @-> [n ii] || _ ,, [ŧni] @-> [n i] || _ ,, [ŧte] @-> [t e] || _ ,, [ŧtii] @-> [t ii] || _ ,, [ŧti] @-> [t i] || _ ;
+define exceptionsEnd [ŧde] @-> [d e] || _ ,, [ŧdii] @-> [d ii] || _ ,, [ŧdi] @-> [d i] || _ ,, [ŧne] @-> [n e] || _ ,, [ŧnii] @-> [n ii] || _ ,, [ŧni] @-> [n i] || _ ,, [ŧte] @-> [t e] || _ ,, [ŧtii] @-> [t ii] || _ ,, [ŧti] @-> [t i] || _ ; 
 
 define GeneralPrefix {bez} | {do} | [d uo] | [m i m o] | {na} | {nad} | [n aa] | [nj e] | [nj e n a] | o | {od} | {odo} | {po} | [vdp o] | {pol} | [vdp o l] | {pre} | [vdp r e] | {pred} | [vdp r e d] | {pri} | [vdp r i] | {roz} | s | {so} | [sh] | {tri} | [vdt r i] | u | {uza} | v | {vy} | {vyna} | {za} | [z aa] ; 
 define sPrefix {popri} | [vdp o vdp r i] | {pre} | [vdp r e] | {pri} | [vdp r i] | {za} | [z aa] ;
 define AdjectiveSuffix {na} | [n aa] | {ne} | [nj e] | {ny} | [n yy] | {ni} | [nj i] | [n ii] | [nj ii] | {neho} | [nj e h o] | [y hh] | {nemu} | [nj e m u] | [n ee m u] | {nym} | {no} | {nom} | [n yy m] | {nimi} | [nj i m i] | [n ii m i] | [nj ii m i] | {nej} | [nj e j] | [n ee] | [n ee h o] | {mi} | [nj ii k] | [nj ii vdk] | [n uu tj] | [n y hh] | [n yy hh] | [yy mi] | [nj o v] | [n o s tj] | [n o s tj i] | [n o s tj ii] | [n o s tj i a m] | [n o s tj i a hh] | [n o s tj ou] | [n o s tj a m i] | [n uu] ;
 define VSuffix [o v a tj] | [a tj] | [aa tj] | {ujem} | {ujeme} | [u j e sh] | [u j e tj e] | {oval} | {ovala} | {ovalo} | {ujeme} | [u j e tj e] | [u j uu] | {ame} | {am} | [a sh] | [a tj e] | a | {ame} | [a tj e] | [a j uu] | {aj} | [o r i tj] | {orka} | {il} | [i lj i] | {ila} | {ilo} | {ina} | {inka} | {iny} | {inky} | [ii n] | [i nj i e k] | [i nj e] | {inke} | [i n aa m] | [i n k aa m] | {inu} | {inku} | {iny} | {inky} | [i nj e] | {inke} | [i n aa hh] | [i n k aa hh] | {inou} | {inkou} | {inami} | {inkami} | {ice} | {iciam} | [i c i a hh] | {icami} | [ii c] | [nj ii k y] | [nj ii k a] | [nj ii k o v] | [v nj ii k u] | [nj ii k o m] | [nj ii k o hh] | [nj ii k a m i] | [nj ii k m i] | [nj ii k] | [nj ii vdk] | {la} | {ala} | [nj a] | {ov} | [a n yy] | [a n aa] | [a n ee] | [a n ii] | [a n ee h o] | {anej} | [a nj e j] | [a n ee m u] | [a n yy m] | [a n uu] | [a n yy hh] | {anom} | [a n yy hh] | [a n yy m i] | [nj u j e m] | [nj u j e sh] | [nj u j e] | [nj u j e m e] | [nj u j e tj e] | [nj u j uu] | {ner} | {neri} | {nera} | {nerov} | {nerovi} | {nerom} | {nera} | [n e r o hh] | {nerami} {nermi} | {na} | [nj i k] | [nj i c i] | [nj i k a] | [nj i k o v] | [nj i k o v i] | [nj i k o m] | [nj i k o v i] | [nj i k o hh] | [nj i k m i] | [nj i k a m i] | {nu} | [n yy m i] | [nj i vdc i] | [i vdc k aa] | [nj i vdc k yy] ; 
-define vExceptions [o d nj] | [o t nj] | [o vdt nj] | [n o s vdt] | [n o s tj] | {nan} | [n a nj] | {nal} | [nj e nj] | [nj e n] | [nj i c] | [sh e t k] | [n aa v a] ;
-define tpExceptions [r VowelPhonem] | [l VowelPhonem] | [n VowelPhonem] | [nj VowelPhonem] | r .#. | l .#. | n .#. | [nj] .#. | {ner} | [r ConsonantPhonem] | [l ConsonantPhonem] | {vom} | [v ii m] | [v aa r] | [m VowelPhonem] | [v VowelPhonem .#.] ;
-define sSuffix [lj ii m] | [lj ii m e] | [lj ii sh] | [lj ii tj e] | [lj ii] | [lj i a] | [nj ii k] | {ujem} | {ujeme} | [u j e sh] | {ujete} | {uje} | [u j uu] | [l VowelPhonem] | [lj VowelPhonem] | {mi} | {vetl} | [v e t lj] | {voj} ;
-define hhExceptions {man} | [m a nj i] | {mana} | {manov} | {manovi} | [m a n o hh] | {manom} | {manmi} | {manami} | [nj a] | [nj e] | [nj ii] | [nj i a m] | [nj u] | [nj e] | [nj i a hh] | [nj a m i] | {no} | {ni} | [n uu] | {ron} ;
+define vExceptions [o d nj] | [o t nj] | [o vdt nj] | [n o s vdt] | [n o s tj] | {nan} | [n a nj] | {nal} | [nj e nj] | [nj e n] | [nj i c] | [sh e t k] | [n aa v a] ; 
+define tpExceptions [r VowelPhonem] | [l VowelPhonem] | [n VowelPhonem] | [nj VowelPhonem] | r .#. | l .#. | n .#. | [nj] .#. | {ner} | [r ConsonantPhonem] | [l ConsonantPhonem] | {vom} | [v ii m] | [v aa r] | [m VowelPhonem] | [v VowelPhonem .#.] ; 
+define sSuffix [lj ii m] | [lj ii m e] | [lj ii sh] | [lj ii tj e] | [lj ii] | [lj i a] | [nj ii k] | {ujem} | {ujeme} | [u j e sh] | {ujete} | {uje} | [u j uu] | [l VowelPhonem] | [lj VowelPhonem] | {mi} | {vetl} | [v e t lj] | {voj} ; 
+define hhExceptions {man} | [m a nj i] | {mana} | {manov} | {manovi} | [m a n o hh] | {manom} | {manmi} | {manami} | [nj a] | [nj e] | [nj ii] | [nj i a m] | [nj u] | [nj e] | [nj i a hh] | [nj a m i] | {no} | {ni} | [n uu] | {ron} ; 
 define cExceptions [nj i n] ; 
-define tjExceptions [m i .#.] ;
+define tjExceptions [m i .#.] ; 
 
 define vInGroup [v] @-> [vlv] || ConsonantPhonem _ ConsonantPhonem ConsonantPhonem ,, [v] @-> [vlv] || ConsonantPhonem ConsonantPhonem _ ConsonantPhonem ,, [v] @-> [vlv] || \j & ConsonantPhonem ConsonantPhonem ConsonantPhonem _ ,, [t] @-> [vdt] || ConsonantPhonem _ ConsonantPhonem ConsonantPhonem ,, [t] @-> [vdt] || ConsonantPhonem ConsonantPhonem _ ConsonantPhonem ,, [t] @-> [vdt] || ConsonantPhonem ConsonantPhonem ConsonantPhonem _ ,, v @-> [vlv] || o _ [n a k] ,, v @-> [vlv] || [dj e] _ [e t] ; 
 define voicingExceptions k @-> [vdk] || _ AdjectiveSuffix .#. | tpExceptions ,, k @-> [vdk] || \.#. _ [r vlv] ,, t @-> [vdt] || .#. | .#. VowelPhonem | .#. GeneralPrefix | .#. GeneralPrefix VowelPhonem _ VoicedConsonantPhonem \.#. ,, t @-> [vdt] || _ tpExceptions | AdjectiveSuffix .#. | {vr} | {vl} ,, p @-> [vdp] || _ tpExceptions | AdjectiveSuffix .#. ,, p @-> [vdp] || .#. | .#. VowelPhonem | .#. GeneralPrefix | .#. GeneralPrefix VowelPhonem _ VoicedConsonantPhonem \.#. ,, sh @-> [vdsh] || _ AdjectiveSuffix | sSuffix .#. ,, ts @-> [vdts] || _ [r vdt] | [r t] | AdjectiveSuffix | sSuffix .#. | [n a t VowelPhonem] | l | r ,, ts @-> [vdts] || [uu] | [i e] _ n ,, ts @-> [vdts] || a | [k r] _ m ,, c @-> [vdc] || _ AdjectiveSuffix .#. ,, t @-> [vdt] || {pe} _ r ,, f @-> [vdf] || _ tpExceptions | AdjectiveSuffix .#. ,, c @-> [vdc] || cExceptions ,, [k v] @-> [vdk vlv] || _ .#. | VowelPhonem ,, k @-> [vdk] || _ [r ConsonantPhonem] | [l ConsonantPhonem] | [r vdt] | [l vdt] | [r vdp] | [l vdp] ,, tj @-> [vdtj] || _ tjExceptions ,, [s m] @-> [vlz m] || .#. | .#. {ko} | .#. {no} | .#. {pro} _ e .#. ,, [ks] @-> [vdk vds] || [s e] _ {is} ; 
@@ -170,7 +170,7 @@ define stressV  a1 | aa1 | e1 | ee1 | ije1 | i1 | ii1 | iil1 | iir1 | o1 | oo1 |
 define vowel  noStressV  | stressV;
 define pc   \vowel;
 define pcx   pc - StressMark;
-define noStress noStressV | pc | StressMark;
+define noStress noStressV | pc | StressMark ; 
 
 define vowelizeR  r -> [iir0 r]  || pc _ pcx ,,
 ax0 -> iir0 || _ r ; 
@@ -184,21 +184,45 @@ ax0 -> iir0 || _ rr ;
 define vowelizeLl  ll -> [iil0 ll]  || pc _ pcx ,,
 ax0 -> iil0 || _ ll ; 
 
-
-
 source stress.foma
 source unicodechars.foma
 
 regex Stage1 .o.
 Stage2 .o.
-spellSpecialCharacters .o. processSpecialCharacters .o. 
-viachlasException .o. 
-deExceptions .o. deForeignExceptions .o. diiExceptions .o. diExceptions .o. diExceptions2 .o. diForeignExceptions .o. 
-neExceptions .o. neForeignExceptions .o. niiExceptions .o. niiForeignExceptions .o. niExceptions .o. niForeignExceptions .o. 
-teExceptions .o. teForeignExceptions .o. tiiExceptions .o. tiExceptions .o. tiExceptions2 .o. tiForeignExceptions .o. 
-rules @->  .o. exceptionsEnd .o. vInGroup .o. voicingExceptions .o. devoicingExceptions .o. devoicingF .o. blockVoicing .o. voicing .o. devoicing .o. devoicingV2 .o. voicingDevoicing .o. 
-WTranscribe .o. 
-UnicodeToNativeTranslit .o. 
+spellSpecialCharacters .o.
+processSpecialCharacters .o.
+viachlasException .o.
+deExceptions .o.
+deForeignExceptions .o.
+diiExceptions .o.
+diExceptions .o.
+diExceptions2 .o.
+diForeignExceptions .o. 
+neExceptions .o.
+neForeignExceptions .o.
+niiExceptions .o.
+niiForeignExceptions .o.
+niExceptions .o.
+niForeignExceptions .o.
+teExceptions .o.
+teForeignExceptions .o.
+tiiExceptions .o.
+tiExceptions .o.
+tiExceptions2 .o.
+tiForeignExceptions .o.
+rules @->  .o.
+exceptionsEnd .o.
+vInGroup .o.
+voicingExceptions .o.
+devoicingExceptions .o.
+devoicingF .o.
+blockVoicing .o.
+voicing .o.
+devoicing .o.
+devoicingV2 .o.
+voicingDevoicing .o.
+WTranscribe .o.
+UnicodeToNativeTranslit .o.
 procStressG2p .o.
 procStress2 .o.
 vowelizeR .o.
