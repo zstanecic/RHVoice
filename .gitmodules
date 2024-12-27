@@ -355,3 +355,9 @@
 [submodule "data/voices/seva"]
 	path = data/voices/seva
 	url = https://github.com/RHVoice/seva-rus.git
+[submodule "src/scripts/Belarussian"]
+	path = src/scripts/Belarussian
+	url = https://github.com/zstanecic/belsrc.git
+[submodule "data/languages/Belarussian"]
+	path = data/languages/Belarussian
+	url = https://github.com/zstanecic/belbin.git
