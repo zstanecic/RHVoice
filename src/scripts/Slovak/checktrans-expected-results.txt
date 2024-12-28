@@ -27,6 +27,7 @@ pau b a lj i s t i k a pau
 pau b a l k a n i s t i k a pau 
 pau b a r m a nj i pau 
 pau b a s t i lj e pau 
+pau b a s t i oo n pau 
 pau b aa s nj i c k yy pau 
 pau b i o t i k a pau 
 pau b i z n i s pau 
@@ -245,6 +246,7 @@ pau n a d v i a z a n e j pau
 pau n a j i n t e n z ii v nj e j sh i e pau 
 pau n a j m e nj e j pau 
 pau n a j f sh e o b e c nj e j sh ii pau 
+pau n a j zh i a d a nj e j sh i e pau 
 pau n aa k l a dj i a k s o s o b n yy m a u t o m pau 
 pau n a s m e r o v a tj pau 
 pau n a s t a v e nj ii pau 
@@ -261,6 +263,8 @@ pau nj e hh pau
 pau n e k t aa r pau 
 pau nj e o d i sh lj i pau 
 pau n e p aa l pau 
+pau nj e p aa lj i m e pau 
+pau n e p aa l o m pau 
 pau nj e p o t v iir r dj e n ee pau 
 pau nj e s m e l yy pau 
 pau nj e s m i e r nj e pau 
@@ -283,6 +287,7 @@ pau n o z m e pau
 pau n o v ii n pau 
 pau n u t e l a pau 
 pau o p hh v a t pau 
+pau o b o h a tj ii pau 
 pau o hh pau 
 pau o hh r o m e n e j pau 
 pau o d i d e o l o g i z o v a n e j pau 
