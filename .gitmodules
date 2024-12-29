@@ -355,3 +355,9 @@
 [submodule "data/voices/seva"]
 	path = data/voices/seva
 	url = https://github.com/RHVoice/seva-rus.git
+[submodule "data/languages/Italian"]
+	path = data/languages/Italian
+	url = https://github.com/rmcpantoja/Italian.git
+[submodule "data/voices/francesca"]
+	path = data/voices/francesca
+	url = https://github.com/rmcpantoja/Francesca-ita.git
