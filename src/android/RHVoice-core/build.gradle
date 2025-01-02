@@ -5,7 +5,7 @@ ext.minor_version = 16
 ext.revision_number = 3
 ext.baseVersionCode = 100000 * major_version + 1000 * minor_version + 10 * revision_number
 
-ext.base_pkg_dir_url = 'https://rhvoice.org/download/packages-%s.json'
+ext.base_pkg_dir_url = 'https://storage.cyrmax.ru/rhvoice/vce/packages-%s.json'
 ext.pkg_dir_url_def_fmt = /-DPKG_DIR_URL="\"%s\""/
 
 task BoostIncludes(type: Exec) {
@@ -33,7 +33,7 @@ android {
         multiDexEnabled true
         minSdk myMinSdkVersion
         targetSdk myTargetSdkVersion
-        applicationId "com.github.olga_yakovleva.rhvoice.android"
+        applicationId "com.github.zvonimir_stanecic.rhvoiceDev.android"
         versionName "${major_version}.${minor_version}.${revision_number}"
         ndk {
             abiFilters 'armeabi-v7a', 'x86', 'arm64-v8a', 'x86_64'
