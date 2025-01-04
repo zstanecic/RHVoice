@@ -48,6 +48,7 @@ pau d aa v n i pau
 pau d e a k t i v o v a tj pau 
 pau dj e c i e k pau 
 pau d e c i m e t e r pau 
+pau dj e dj i ts n aa pau 
 pau d e d u k ts n aa pau 
 pau d e d u k o v a tj pau 
 pau d e f i c i t pau 
@@ -111,6 +112,7 @@ pau e p i d e m i o l oo g i a pau
 pau e s t e r pau 
 pau e s t e t i k a pau 
 pau e sh t e b aa k pau 
+pau e t e r n i t pau 
 pau e t i oo p s k y pau 
 pau e t n i c k yy pau 
 pau e v a k u aa c i a pau 
@@ -207,6 +209,7 @@ pau k o n z i s t e n ts nj e pau
 pau k oo d e k s pau 
 pau k r e d e n c pau 
 pau k iir r ts m a pau 
+pau k r e a t i v i t a pau 
 pau k r i s t ii n a pau 
 pau k r i t i c i pau 
 pau k r i t i c k y pau 
@@ -241,6 +244,7 @@ pau m i n e r aa l pau
 pau m i n i s t e r pau 
 pau m yy t n e pau 
 pau m lj i e ts n e j pau 
+pau m n e m o t e hh n i c k yy pau 
 pau m o d e r n i z o v a n e j pau 
 pau m o d e r n ii pau 
 pau m o t i ts k y pau 
@@ -280,6 +284,7 @@ pau nj e s m i e r nj e pau
 pau nj e s m i e sh pau 
 pau nj e s p o lj i t i z o v a n e j pau 
 pau nj e s v o j a pau 
+pau nj e sh t a n d a r d i z o v a n yy pau 
 pau n e t pau 
 pau nj e tj e r pau 
 pau nj e u r o b ii tj e pau 
@@ -315,10 +320,11 @@ pau p a r tj i ts k a pau
 pau p a r t ii c i a pau 
 pau p a t e t i c k yy pau 
 pau p a t e t i k a pau 
+pau p ae tj i c a pau 
 pau p e d i a t e r pau 
 pau p e d i a t r i c k yy pau 
 pau p e k n yy h m l aa dj e n c o u pau v y r a s t a j uu z v y ts nj i e v a j uu c i hh pau m o d r a s t o ts i e r n y hh sh g u rr n pau 
-pau p ae tj i c a pau 
+pau p e r i o d i z aa c i a pau 
 pau p e s t o v a nj ii pau 
 pau p e t ii c i a pau 
 pau p i a t e j pau 
@@ -402,6 +408,7 @@ pau s e d i m e n t pau
 pau s e n i o r pau 
 pau s e p t e m b e r pau 
 pau s e k s i s t i c k yy pau 
+pau s ee n i u m pau 
 pau s hh i z o f r e n i c k yy pau 
 pau s k a p a n e j pau 
 pau s k uu t e r pau 
@@ -443,6 +450,7 @@ pau sh i e s t e j pau
 pau sh i k o v n ii pau 
 pau sh k a n d i n aa v i a pau 
 pau sh l a m a s t i k a pau 
+pau sh lj a hh tj i c k yy pau 
 pau sh t v o r k a pau 
 pau sh t v iir r t e j pau 
 pau t e ts u j tj e pau 
