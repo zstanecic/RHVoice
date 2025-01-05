@@ -20,6 +20,7 @@ define InitialTranscribe
 и:iil1 | 
 и:iir1 | 
 a:a | 
+ä:ae | 
 á:aa | 
 b:b | 
 c:c | 
@@ -58,6 +59,7 @@ t:t |
 ť:tj | 
 u:u | 
 ú:uu | 
+ů:uu | 
 ü:u | 
 v:v | 
 x:[ks] | 
@@ -67,7 +69,6 @@ z:z |
 ž:zh ; 
 
 define WTranscribe w:v @-> ; 
-
 
 define Digraphs 
 [c h]:[hh] | 
@@ -84,11 +85,6 @@ define spellSpecialCharacters [
 [ě]: [ee z m e k ts e nj o m] |
 [ů]: [uu s k r uu sh k o m] 
 ] @-> || .#. _ .#. ; 
-
-define processSpecialCharacters [
-[ä]: [ae] | 
-[ů]: [uu] 
-] @-> || _ ;
 
 define ShortVowelPhonem [a | e | i | o | u | y | ae ] ; 
 define LongVowelPhonem [aa | ee | ije | ii | oo | uo | uu | ou | yy | iil1 | iir1 | ax1 ] ; 
@@ -190,7 +186,6 @@ source unicodechars.foma
 regex Stage1 .o.
 Stage2 .o.
 spellSpecialCharacters .o.
-processSpecialCharacters .o.
 viachlasException .o.
 deExceptions .o.
 deForeignExceptions .o.
