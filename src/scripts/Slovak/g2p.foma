@@ -81,7 +81,6 @@ define Digraphs
 ě:[i e] ; 
 
 define spellSpecialCharacters [
-[ä]: [p r e h l a s o v a n ee aa] | 
 [ě]: [ee z m e k ts e nj o m] |
 [ů]: [uu s k r uu sh k o m] 
 ] @-> || .#. _ .#. ; 
