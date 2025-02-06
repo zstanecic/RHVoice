@@ -70,7 +70,7 @@ jedna -> jeden || ^ _ milión ;
 define Fix31Tys 
 tisíc:tisíc|
 miliónů:miliónů|
-miliard:miliárd|
+miliard:miliard|
 biliónů:biliónů -> || 
 [dvacet|třicet|čtyřicet|padesát|
 šedesát|sedmdesát|osmdesát|devadesát|
