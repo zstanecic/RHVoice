@@ -55,6 +55,8 @@ accentSuffixes = {
 	"\u032c": "s mäkčeňom pod",
 }
 
+fullWidth = "plná šírka"
+
 latinExceptions = {
 	'đ': ('d', 'dé so šikmým dĺžňom'),
 	'ħ': ('h', 'há so šikmým dĺžňom'),
@@ -322,6 +324,10 @@ def appendLists(lowcaseChar, upcaseChar, nativeStr, descStr):
 	if upcaseChar and ord(upcaseChar) >=255:
 		graphs[upcaseChar]=chType
 
+def writeFoma(fileName, content):
+	with open(fileName, "w") as fi:
+		fi.write(content)
+
 translitDict={}
 translitTokDict={}
 lseqDict={}
@@ -384,11 +390,19 @@ for lseqStr in lseqDict.keys():
 resultFoma="""#Do not edit, file automatically generated.
 #
 #For g2p:
-define UnicodeToNativeTranslit \n"""\
+define NormalizeCharactersBase \n"""\
 +",,\n".join(translitParts)+";\n"\
 +"""
 
-#For tok (single char to single letter):
+regex 
+NormalizeCharactersBase ; 
+"""
+
+writeFoma("norm.foma", resultFoma)
+
+resultFoma="""#Do not edit, file automatically generated.
+#
+#For tok (character(s) to single letter):
 define UnicodeToNativeTranslitTok \n"""\
 +",,\n".join(translitTokParts)+";\n"\
 +"""
@@ -407,9 +421,7 @@ define UnicodeLseq \n"""\
 define UnicodeDowncase \n"""\
 +",,\n".join(downcaseParts)+";\n"
 
-fi=open("unicodechars.foma", "w")
-fi.write(resultFoma)
-fi.close()
+writeFoma("unicodechars.foma", resultFoma)
 
 fi=open("../../../data/languages/"+lang+"/graph.txt", "w")
 for ch, chType in graphs.items():
@@ -417,4 +429,4 @@ for ch, chType in graphs.items():
 fi.close()
 
 print("Unicode characters definitions generated.\n")
-print("Recompile downcase, g2p, lseq, spell and tok.foma.")
+print("Recompile downcase, norm, lseq, spell and tok.foma.")
