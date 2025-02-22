@@ -285,21 +285,35 @@ def appendLists(lowcaseChar, upcaseChar, nativeStr, descStr):
 	lseqStr=getTranscription(descStr)
 	if not len(lseqStr):
 		errExit("Can not generate transcription for description '%s'" %(descStr))
-	if upcaseChar and ord(upcaseChar) >=255:
-		if nativeStr: translitParts.append("[%"+lowcaseChar+"|%"+upcaseChar+"] -> {"+nativeStr+"} || _ ")
-	else:
-		if nativeStr: translitParts.append("[%"+lowcaseChar+"] -> {"+nativeStr+"} || _ ")
-	if upcaseChar and ord(upcaseChar) >=255:
-		if nativeStr: translitTokParts.append("[%"+lowcaseChar+"|%"+upcaseChar+"] -> "+nativeStr[:1]+" || _ ")
-	else:
-		if nativeStr: translitTokParts.append("[%"+lowcaseChar+"] -> "+nativeStr[:1]+" || _ ")
-	if upcaseChar and ord(upcaseChar) >=255:
+	if nativeStr and not nativeStr in translitDict.keys():
+		translitDict[nativeStr] = []
+	try:
+		nativeStrTok = nativeStr[:1]
+	except:
+		nativeStrTok = None
+	if nativeStrTok and not nativeStrTok in translitTokDict.keys():
+		translitTokDict[nativeStrTok] = []
+	if descStr and not descStr in spellDict.keys():
+		spellDict[descStr] = []
+	if not lseqStr in lseqDict.keys():
+		lseqDict[lseqStr] = []
+	if nativeStr and lowcaseChar:
+		translitDict[nativeStr].append("%"+lowcaseChar)
+	if nativeStrTok and lowcaseChar:
+		translitTokDict[nativeStrTok].append("%"+lowcaseChar)
+	if descStr and lowcaseChar:
+		spellDict[descStr].append("%"+lowcaseChar)
+	if lowcaseChar:
+		lseqDict[lseqStr].append("%"+lowcaseChar)
+	if upcaseChar and upcaseChar != lowcaseChar and ord(upcaseChar) >=255:
 		downcaseParts.append("%"+upcaseChar+" -> %"+lowcaseChar+" || _ ")
-	if upcaseChar and ord(upcaseChar) >=255:
-		spellParts.append("[[%"+lowcaseChar+"|%"+upcaseChar+"]:["+descStr+"]]")
-	else:
-		spellParts.append("[[%"+lowcaseChar+"]:["+descStr+"]]")
-	lseqParts.append("%"+lowcaseChar+":["+lseqStr+"]")
+		if nativeStr:
+			translitDict[nativeStr].append("%"+upcaseChar)
+		if nativeStrTok:
+			translitTokDict[nativeStrTok].append("%"+upcaseChar)
+		if descStr:
+			spellDict[descStr].append("%"+upcaseChar)
+
 	if nativeStr in graphs:
 		chType=graphs[nativeStr]
 	else:
@@ -308,6 +322,10 @@ def appendLists(lowcaseChar, upcaseChar, nativeStr, descStr):
 	if upcaseChar and ord(upcaseChar) >=255:
 		graphs[upcaseChar]=chType
 
+translitDict={}
+translitTokDict={}
+lseqDict={}
+spellDict={}
 translitParts=[]
 translitTokParts=[]
 downcaseParts=[]
@@ -353,6 +371,14 @@ for preformatted in latinExceptions.keys():
 	descStr = latinExceptions[preformatted][1]
 	appendLists(lowcaseChar, upcaseChar, nativeStr, descStr)
 
+for nativeStr in translitDict.keys():
+	translitParts.append("[" + "|".join(translitDict[nativeStr]) + "] -> {"+nativeStr+"} || _ ")
+for nativeStrTok in translitTokDict.keys():
+	translitTokParts.append("[" + "|".join(translitTokDict[nativeStrTok]) + "] -> "+nativeStrTok+" || _ ")
+for descStr in spellDict.keys():
+	spellParts.append("[[" + "|".join(spellDict[descStr]) + "]:["+descStr+"]]")
+for lseqStr in lseqDict.keys():
+	lseqParts.append("[" + "|".join(lseqDict[lseqStr]) + "]:["+lseqStr+"]")
 resultFoma="""#Do not edit, file automatically generated.
 #
 #For g2p:
