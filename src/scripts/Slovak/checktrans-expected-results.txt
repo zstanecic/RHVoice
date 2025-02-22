@@ -14,6 +14,7 @@ pau a l b a n i s t i k a pau
 pau a l p i n i s t i k a pau 
 pau a m e r i k a n i s t i k y pau 
 pau a m e r i k a n i z o v a n e j pau 
+pau a m s t e r d a m pau 
 pau a n t a r k t ii d y pau 
 pau a p e t ii t o m pau 
 pau a r g e n t ii n a pau 
@@ -66,6 +67,7 @@ pau d e k o r a t i v i z m u s pau
 pau d e k o r t i f i k aa c i a pau 
 pau d e l t a pau 
 pau d e m e n c i a pau 
+pau d e n i s pau 
 pau d e o k s y r i b o n u k lj e o v e j pau 
 pau d e r b y pau 
 pau d e r i v aa c i a pau 
@@ -94,6 +96,7 @@ pau dj i a nj i e pau
 pau d i lj e m a pau 
 pau d i n o s a u r pau 
 pau d i sh p u t aa t pau 
+pau d i sh t r i k t pau 
 pau d i v a pau 
 pau dj i v a dj e l n uu pau 
 pau d i v e r z i f i k aa c i a pau 
@@ -150,6 +153,7 @@ pau h o t e l pau
 pau h iir r b o lj a t e j pau 
 pau h iir r d ii pau 
 pau h u m a n i t pau 
+pau h u m a n i z u j e m e pau 
 pau h v i e s t pau 
 pau h y m n i c k aa pau 
 pau h y p o t ee k a pau 
@@ -295,6 +299,7 @@ pau nj e s v o j a pau
 pau nj e sh t a n d a r d i z o v a n yy pau 
 pau n e t pau 
 pau nj e tj e r pau 
+pau n e u r aa l n a pau 
 pau nj e u r o b ii tj e pau 
 pau nj e u r o dj i l o pau 
 pau n e u r o t i c i z m u s pau 
@@ -429,6 +434,7 @@ pau s n a h a pau
 pau s o n i c k aa pau 
 pau s o p tj i l a pau 
 pau s p aa l nj i pau 
+pau s p a s t i c i t a pau 
 pau s p o d o b o v a nj ii pau 
 pau s p o l u v y t v aa r a pau 
 pau s p r o s t ii pau 
