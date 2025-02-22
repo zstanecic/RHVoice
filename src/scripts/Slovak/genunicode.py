@@ -361,6 +361,8 @@ for i in range(ord("a"), ord("z") +1):
 			print(descStr)
 			appendLists(lowcaseChar, upcaseChar, nativeStr, descStr)
 
+for charStr, descStr in accentNames.items():
+	latinExceptions[charStr] = ('', descStr)
 for preformatted in latinExceptions.keys():
 	lowcaseChar = preformatted
 	try:

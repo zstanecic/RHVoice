@@ -373,7 +373,28 @@ define UnicodeSpell
 [[%ʬ]:[perný náraz]]|
 [[%ʭ]:[zubný náraz]]|
 [[%ʮ]:[otočené há s háčikom]]|
-[[%ʯ]:[otočené há s háčikom a chvostíkom]];
+[[%ʯ]:[otočené há s háčikom a chvostíkom]]|
+[[%̀]:[prízvuk]]|
+[[%́]:[dĺžeň]]|
+[[%̂]:[vokáň]]|
+[[%̃]:[vlnovka]]|
+[[%̄]:[makrón]]|
+[[%̆]:[oblúčik]]|
+[[%̇]:[bodka nad]]|
+[[%̈]:[prehláska]]|
+[[%̉]:[háčik nad]]|
+[[%̊]:[krúžok]]|
+[[%̋]:[dvojitý dĺžeň]]|
+[[%̌]:[mäkčeň]]|
+[[%̏]:[dvojitý prízvuk]]|
+[[%̑]:[obrátený oblúčik]]|
+[[%̓]:[čiarka nad]]|
+[[%̖]:[prízvuk pod]]|
+[[%̗]:[dĺžeň pod]]|
+[[%̦]:[čiarka pod]]|
+[[%̧]:[cedilla]]|
+[[%̨]:[ogonek]]|
+[[%̬]:[mäkčeň pod]];
 
 
 #For lseq:
@@ -687,7 +708,28 @@ define UnicodeLseq
 [%ʬ]:[p e r n yy n aa r a s]|
 [%ʭ]:[z u b n yy n aa r a s]|
 [%ʮ]:[o t o ts e n ee h aa z h aa ts i k o m]|
-[%ʯ]:[o t o ts e n ee h aa z h aa ts i k o m a hh v o s tj ii k o m];
+[%ʯ]:[o t o ts e n ee h aa z h aa ts i k o m a hh v o s tj ii k o m]|
+[%̀]:[p r ii z v u k]|
+[%́]:[d iil ll zh e nj]|
+[%̂]:[v o k aa nj]|
+[%̃]:[v iil l n o u k a]|
+[%̄]:[m a k r oo n]|
+[%̆]:[o b l uu ts i k]|
+[%̇]:[b o t k a n a t]|
+[%̈]:[p r e h l aa s k a]|
+[%̉]:[h aa ts i g n a t]|
+[%̊]:[k r uu zh o k]|
+[%̋]:[d v o j i t yy d iil ll zh e nj]|
+[%̌]:[m ae k ts e nj]|
+[%̏]:[d v o j i t yy p r ii z v u k]|
+[%̑]:[o b r aa tj e n yy o b l uu ts i k]|
+[%̓]:[ts i a r k a n a t]|
+[%̖]:[p r ii z v u k p o t]|
+[%̗]:[d iil ll zh e nj p o t]|
+[%̦]:[ts i a r k a p o t]|
+[%̧]:[c e dj i l l a]|
+[%̨]:[o g o nj e k]|
+[%̬]:[m ae k ts e nj p o t];
 
 
 #For downcase:
