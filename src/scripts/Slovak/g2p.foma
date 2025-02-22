@@ -216,7 +216,6 @@ devoicing .o.
 devoicingV2 .o.
 voicingDevoicing .o.
 WTranscribe .o.
-UnicodeToNativeTranslit .o.
 procStressG2p .o.
 procStress2 .o.
 vowelizeR .o.
