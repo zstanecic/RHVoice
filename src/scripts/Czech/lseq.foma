@@ -69,5 +69,10 @@ source unicodechars.foma
 
 define TranscribeLetterSequence LetterLseq|UnicodeLseq -> || _ ;
 
-regex TranscribeLetterSequence .o.
+define FixWww 
+[d v o j i t ee v ee d v o j i t ee v ee d v o j i t ee v ee]:[v ee1 v ee1 v ee1] -> || .#. _ .#. ; 
+
+regex 
+TranscribeLetterSequence .o.
+FixWww .o. 
 procStressLseq .o. procStress2; 
