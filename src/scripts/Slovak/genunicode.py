@@ -238,13 +238,13 @@ baseCharSpelling = {
 	"n": "en",
 	"o": "ó",
 	"p": "pé",
-	"q": "qé",
+	"q": "kvé",
 	"r": "er",
 	"s": "es",
 	"t": "té",
 	"u": "ú",
 	"v": "vé",
-	"w": "dvojíté vé",
+	"w": "dvojité vé",
 	"x": "ix",
 	"y": "ypsilón",
 	"z": "zet",
@@ -369,14 +369,18 @@ for i in range(ord("a"), ord("z") +1):
 
 for charStr, descStr in accentNames.items():
 	latinExceptions[charStr] = ('', descStr)
-for preformatted in latinExceptions.keys():
-	lowcaseChar = preformatted
+for charStr, preformatted in latinExceptions.items():
+	lowcaseChar = charStr
+	if not lowcaseChar:
+		continue
 	try:
-		upcaseChar = preformatted.upper()
+		upcaseChar = lowcaseChar.upper()
 	except:
 		upcaseChar = None
-	nativeStr = latinExceptions[preformatted][0]
-	descStr = latinExceptions[preformatted][1]
+	if upcaseChar and upcaseChar == lowcaseChar:
+		upcaseChar = None
+	nativeStr = preformatted[0]
+	descStr = preformatted[1]
 	appendLists(lowcaseChar, upcaseChar, nativeStr, descStr)
 
 for nativeStr in translitDict.keys():
