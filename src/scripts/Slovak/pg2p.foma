@@ -70,4 +70,6 @@ define AssimilationEnd pvlb @-> p || _ ,, pvld @-> t || _ ,, pvldj @-> tj || _ ,
 
 define FixForeign kv @-> [k v] ,, ks @-> [k s] ;
 
+source unicodechars.foma
+
 regex czechPrep .o. spellLetters .o. vzAssimilation .o. sExceptions .o. sAssimilation .o. VoicelessAssimilationPause .o. VoicelessAssimilation .o. AssimilationEnd .o. FixForeign ;
