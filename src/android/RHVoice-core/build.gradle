@@ -107,26 +107,26 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'androidx.documentfile:documentfile:1.0.1'
 
-    def lifecycle_version = "2.5.1"
+    def lifecycle_version = "2.8.7"
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
-    implementation 'androidx.preference:preference:1.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'androidx.work:work-runtime:2.8.1'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.work:work-runtime:2.10.0'
 
     implementation 'com.google.android.exoplayer:exoplayer-core:2.17.1'
-    implementation 'com.google.guava:guava:31.1-android'
-    implementation 'com.squareup.moshi:moshi:1.14.0'
-    implementation 'io.github.vvb2060.ndk:curl:8.1.1'
-    implementation 'org.conscrypt:conscrypt-android:2.5.2'
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+    implementation 'com.google.guava:guava:33.3.1-android'
+    implementation 'com.squareup.moshi:moshi:1.15.2'
+    implementation 'io.github.vvb2060.ndk:curl:8.10.0-lto-ndk27'
+    implementation 'org.conscrypt:conscrypt-android:2.5.3'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.3'
 }
 
 preBuild.dependsOn BoostIncludes
