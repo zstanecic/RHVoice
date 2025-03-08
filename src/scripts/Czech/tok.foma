@@ -13,8 +13,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-define SmallLetter a|ä|á|b|c|č|d|ď|e|é|ě|f|g|h|i|í|j|k|l|ľ|ĺ|m|n|ň|o|ó|ô|p|q|r|ř|ŕ|s|š|t|ť|u|ú|ů|v|w|x|y|ý|z|ž ; 
-define CapitalLetter A|Ä|Á|B|C|Č|D|ď|E|É|Ě|F|G|H|I|Í|J|K|L|Ľ|Ĺ|M|N|Ň|O|Ó|Ô|P|Q|R|Ř|Ŕ|S|Š|T|Ť|U|Ú|Ů|V|W|X|Y|Ý|Z|Ž ; 
+define SmallLetter a|ä|á|b|c|č|d|ď|e|é|ě|f|g|h|i|í|j|k|l|ľ|ĺ|m|n|ň|o|ö|ó|ô|p|q|r|ř|ŕ|s|š|t|ť|u|ü|ú|ů|v|w|x|y|ý|z|ž ; 
+define CapitalLetter A|Ä|Á|B|C|Č|D|ď|E|É|Ě|F|G|H|I|Í|J|K|L|Ľ|Ĺ|M|N|Ň|O|Ó|Ô|Ö|P|Q|R|Ř|Ŕ|S|Š|T|Ť|U|Ú|Ů|Ü|V|W|X|Y|Ý|Z|Ž ; 
 define Letter SmallLetter | CapitalLetter ; 
 
 define CaseVariants 
@@ -43,6 +43,7 @@ m -> m|M ,
 n -> n|N , 
 ň -> ň|Ň , 
 o -> o|O , 
+ö -> ö|Ö , 
 ó -> ó|Ó , 
 ô -> ô|Ô , 
 p -> p|P , 
@@ -55,6 +56,7 @@ s -> s|S ,
 t -> t|T , 
 ť -> ť|Ť , 
 u -> u|U , 
+ü -> ü|Ü , 
 ú -> ú|Ú , 
 ů -> ů|Ů , 
 v -> v|V , 
