@@ -13,6 +13,10 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+define SmallLetter a|ä|á|b|c|č|d|ď|e|é|ě|f|g|h|i|í|j|k|l|ľ|ĺ|m|n|ň|o|ö|ó|ô|p|q|r|ř|ŕ|s|š|t|ť|u|ü|ú|ů|v|w|x|y|ý|z|ž ; 
+define CapitalLetter A|Ä|Á|B|C|Č|D|Ď|E|É|Ě|F|G|H|I|Í|J|K|L|Ľ|Ĺ|M|N|Ň|O|Ó|Ô|Ö|P|Q|R|Ř|Ŕ|S|Š|T|Ť|U|Ú|Ů|Ü|V|W|X|Y|Ý|Z|Ž ; 
+define Letter SmallLetter | CapitalLetter ; 
+
 define CaseVariants 
 a -> a|A , 
 ä -> ä|Ä , 
@@ -39,6 +43,7 @@ m -> m|M ,
 n -> n|N , 
 ň -> ň|Ň , 
 o -> o|O , 
+ö -> ö|Ö , 
 ó -> ó|Ó , 
 ô -> ô|Ô , 
 p -> p|P , 
@@ -51,6 +56,7 @@ s -> s|S ,
 t -> t|T , 
 ť -> ť|Ť , 
 u -> u|U , 
+ü -> ü|Ü , 
 ú -> ú|Ú , 
 ů -> ů|Ů , 
 v -> v|V , 
@@ -68,8 +74,6 @@ define ConsonantLetterSequence
 
 define LetterSequence 
 [ConsonantLetterSequence .o. CaseVariants].l ; 
-
-define Letter a|A|ä|Ä|á|Á|b|B|c|C|č|Č|d|D|ď|Ď|e|E|é|É|ě|Ě|f|F|g|G|h|H|i|I|í|Í|j|J|k|K|l|L|ľ|Ľ|ĺ|Ĺ|m|M|n|N|ň|Ň|o|O|ó|Ó|ô|Ô|p|P|q|Q|r|R|ř|Ř|ŕ|Ŕ|s|S|š|Š|t|T|ť|Ť|u|U|ú|Ú|ů|Ů|v|V|w|W|x|X|y|Y|ý|Ý|z|Z|ž|Ž;
 
 define NZDigit 1|2|3|4|5|6|7|8|9;
 define Digit %0|NZDigit;
@@ -98,9 +102,13 @@ word -> lseq || .#.  [y|Y] _ ,,
 num -> sym || DecimalSeparator _ Digit+ num DecimalSeparator num,
  DecimalSeparator num Digit+ num DecimalSeparator _ ;
 
+define CamelCase 
+[..] -> word || SmallLetter _ CapitalLetter , CapitalLetter _ CapitalLetter SmallLetter ; 
+
 source unicodechars.foma
 
 regex UnicodeToNativeTranslitTok .o. 
 Stage1 .o.
+CamelCase .o.
 Stage2 .o. 
 Stage3 ; 
