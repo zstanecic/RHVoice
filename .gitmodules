@@ -364,3 +364,6 @@
 [submodule "data/voices/Mateo"]
 	path = data/voices/Mateo
 	url = https://github.com/RHVoice/mateo-spa
+[submodule "data/languages/Belarussian"]
+	path = data/languages/Belarussian
+	url = https://github.com/zstanecic/belbin.git
