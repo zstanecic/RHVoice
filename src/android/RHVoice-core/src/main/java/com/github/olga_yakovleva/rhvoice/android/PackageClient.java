@@ -21,8 +21,18 @@ import android.content.Context;
 import java.io.File;
 
 final class PackageClient {
-    public static final String getPath(Context context) {
+    // Credential protected storage (default, kao do sada)
+    public static String getPath(Context context) {
         File dir = context.getDir("packages", 0);
+        if (!dir.isDirectory()) {
+            dir.mkdirs();
+        }
+        return dir.getAbsolutePath();
+    }
+
+    public static String getDeviceProtectedPath(Context context) {
+        Context deviceContext = context.createDeviceProtectedStorageContext();
+        File dir = deviceContext.getDir("packages", 0);
         if (!dir.isDirectory()) {
             dir.mkdirs();
         }

@@ -17,41 +17,41 @@
 package com.github.olga_yakovleva.rhvoice.android;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
 public final class Config {
     private static final String TAG = "RHVoiceConfig";
     private static final String CONFIG_FILE_NAME = "RHVoice.conf";
 
-    public static File getDir(Context context) {
+    public static File getDir(Context context, boolean requireDeviceProtected) {
+        Context ctx = context;
+        if (requireDeviceProtected && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            ctx = context.createDeviceProtectedStorageContext();
+        }
         if (BuildConfig.DEBUG)
             Log.d(TAG, "Requesting path to the private external storage directory");
-        File dir = context.getExternalFilesDir(null);
+        File dir = ctx.getExternalFilesDir(null);
         if (dir == null) {
             if (BuildConfig.DEBUG)
                 Log.d(TAG, "The private external storage directory does not exist");
-            return context.getDir("config", 0);
+            return ctx.getDir("config", 0);
         }
         if (BuildConfig.DEBUG)
             Log.d(TAG, "The path to the private external storage directory is " + dir.getAbsolutePath());
         return dir;
     }
 
-    public static File getDictsRootDir(Context ctx) {
-        return new File(getDir(ctx), "dicts");
+    public static File getDictsRootDir(Context ctx, boolean requireDeviceProtected) {
+        return new File(getDir(ctx, requireDeviceProtected), "dicts");
     }
 
-    public static File getLangDictsDir(Context ctx, String langName) {
-        return new File(getDictsRootDir(ctx), langName);
+    public static File getLangDictsDir(Context ctx, String langName, boolean requireDeviceProtected) {
+        return new File(getDictsRootDir(ctx, requireDeviceProtected), langName);
     }
 
-    public static File getConfigFile(Context ctx) {
-        return new File(getDir(ctx), CONFIG_FILE_NAME);
+    public static File getConfigFile(Context ctx, boolean requireDeviceProtected) {
+        return new File(getDir(ctx, requireDeviceProtected), CONFIG_FILE_NAME);
     }
 }

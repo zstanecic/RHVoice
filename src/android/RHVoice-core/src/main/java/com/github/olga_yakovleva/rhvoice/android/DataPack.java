@@ -472,10 +472,17 @@ public abstract class DataPack {
     }
 
     public boolean install(Context context, IDataSyncCallback callback) {
+        boolean ok1 = installSingle(context, callback);
+        Context deviceContext = context.createDeviceProtectedStorageContext();
+        boolean ok2 = installSingle(deviceContext, callback);
+        return ok1 || ok2;
+    }
+
+    private boolean installSingle(Context context, IDataSyncCallback callback) {
         if (isUpToDate(context))
             return true;
         if (BuildConfig.DEBUG)
-            Log.v(TAG, "Installing " + getType() + " " + getName());
+            Log.v(TAG, "Installing " + getType() + " " + getName() + " in context: " + context.getFilesDir());
         File tempDir = getTempDir(context);
         if (!mkdir(tempDir)) {
             if (BuildConfig.DEBUG)
@@ -538,7 +545,7 @@ public abstract class DataPack {
             }
             getPrefs(context).edit().putInt(getVersionKey(), versionCode).commit();
             if (BuildConfig.DEBUG)
-                Log.v(TAG, "Installed " + getType() + " " + getName());
+                Log.v(TAG, "Installed " + getType() + " " + getName() + " in context: " + context.getFilesDir());
             cleanup(context, versionCode);
             notifyInstallation(callback);
             context.sendBroadcast(new Intent(TextToSpeech.Engine.ACTION_TTS_DATA_INSTALLED));
@@ -610,8 +617,14 @@ public abstract class DataPack {
     }
 
     public void uninstall(Context context, IDataSyncCallback callback) {
+        uninstallSingle(context, callback);
+        Context deviceContext = context.createDeviceProtectedStorageContext();
+        uninstallSingle(deviceContext, callback);
+    }
+
+    private void uninstallSingle(Context context, IDataSyncCallback callback) {
         if (BuildConfig.DEBUG)
-            Log.v(TAG, "Removing " + getType() + " " + getName());
+            Log.v(TAG, "Removing " + getType() + " " + getName() + " in context: " + context.getFilesDir());
         cleanup(context, 0);
         getPrefs(context).edit().remove(getVersionKey()).commit();
         notifyRemoval(callback);

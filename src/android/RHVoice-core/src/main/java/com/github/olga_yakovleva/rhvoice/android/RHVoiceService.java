@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.UserManager;
 import android.speech.tts.SynthesisCallback;
 import android.speech.tts.SynthesisRequest;
 import android.speech.tts.TextToSpeech;
@@ -359,6 +360,15 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         return best;
     }
 
+    // Helper to determine if we are in Direct Boot (user not unlocked).
+    private boolean isDirectBoot(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+            return um != null && !um.isUserUnlocked();
+        }
+        return false;
+    }
+
     private void initialize() {
         if (BuildConfig.DEBUG)
             Log.i(TAG, "Initializing the engine");
@@ -368,7 +378,15 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         }
         Tts tts = new Tts();
         try {
-            File configDir = Config.getDir(this);
+            // Use Device Protected Storage if in Direct Boot mode
+            Context configContext = this;
+            boolean requireDeviceProtected = isDirectBoot(this);
+            if (requireDeviceProtected) {
+                configContext = this.createDeviceProtectedStorageContext();
+                if (BuildConfig.DEBUG)
+                    Log.i(TAG, "Using device protected storage for config");
+            }
+            File configDir = Config.getDir(configContext, requireDeviceProtected);
             tts.engine = new TTSEngine("", configDir.getAbsolutePath(), paths, PackageClient.getPath(this), CoreLogger.instance);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)

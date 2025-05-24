@@ -105,7 +105,13 @@ public final class DataManager {
     public List<VoiceInfo> getVoices(Context context) {
         TTSEngine engine = null;
         try {
-            engine = new TTSEngine("", Config.getDir(context).getAbsolutePath(), getPaths(context), PackageClient.getPath(context), CoreLogger.instance);
+            engine = new TTSEngine(
+                "", 
+                Config.getDir(context).getAbsolutePath(), 
+                getPaths(context), 
+                PackageClient.getPath(context), 
+                CoreLogger.instance
+            );
             return engine.getVoices();
         } catch (RHVoiceException e) {
             if (BuildConfig.DEBUG)
@@ -117,6 +123,31 @@ public final class DataManager {
         }
     }
 
+    // Nova metoda koja podržava i device protected storage
+    public List<VoiceInfo> getVoices(Context context, boolean useDeviceProtectedStorage) {
+        TTSEngine engine = null;
+        try {
+            String pkgPath = useDeviceProtectedStorage
+                ? PackageClient.getDeviceProtectedPath(context)
+                : PackageClient.getPath(context);
+
+            engine = new TTSEngine(
+                "",
+                Config.getDir(context).getAbsolutePath(),
+                getPaths(context),
+                pkgPath,
+                CoreLogger.instance
+            );
+            return engine.getVoices();
+        } catch (RHVoiceException e) {
+            if (BuildConfig.DEBUG)
+                Log.e(TAG, "Engine initialization failed", e);
+            return Collections.<VoiceInfo>emptyList();
+        } finally {
+            if (engine != null)
+                engine.shutdown();
+        }
+    }
 
     @MainThread
     public void scheduleSync(Context context, boolean replace) {
