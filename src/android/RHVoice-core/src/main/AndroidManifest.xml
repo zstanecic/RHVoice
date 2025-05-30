@@ -16,7 +16,8 @@
     <service
         android:label="@string/app_name"
         android:name=".RHVoiceService"
-        android:exported="true">
+        android:exported="true"
+        android:directBootAware="true">
       <intent-filter>
         <action android:name="android.intent.action.TTS_SERVICE"/>
         <category android:name="android.intent.category.DEFAULT"/>
