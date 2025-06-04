@@ -1,3 +1,5 @@
+/* Copyright (C) 2025  Darko Milosevic <daremc86@gmail.com> */
+
 /* Copyright (C) 2013, 2014, 2016, 2019  Olga Yakovleva <yakovleva.o.v@gmail.com> */
 
 /* This program is free software: you can redistribute it and/or modify */
@@ -18,6 +20,7 @@ package com.github.olga_yakovleva.rhvoice.android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 
@@ -34,6 +37,7 @@ public final class CheckTTSData extends Activity {
     private DataManager dm;
     private ArrayList<String> installedLanguages = new ArrayList<String>();
     private ArrayList<String> notInstalledLanguages = new ArrayList<String>();
+    private static Context storageContext = MyApplication.getStorageContext();
 
     private void checkData() {
         installedLanguages.clear();
@@ -42,7 +46,7 @@ public final class CheckTTSData extends Activity {
             boolean installed = false;
             boolean notInstalled = false;
             for (VoicePack voice : accent.getVoices()) {
-                if (voice.getEnabled(this) && voice.isUpToDate(this))
+                if (voice.getEnabled(storageContext) && voice.isUpToDate(storageContext))
                     installed = true;
                 else
                     notInstalled = true;
@@ -56,7 +60,7 @@ public final class CheckTTSData extends Activity {
             if (notInstalled)
                 notInstalledLanguages.add(tag);
         }
-        dm.scheduleSync(this, false);
+        dm.scheduleSync(storageContext, false);
     }
 
     @Override
