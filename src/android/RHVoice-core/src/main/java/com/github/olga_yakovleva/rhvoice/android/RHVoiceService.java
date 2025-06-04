@@ -1,3 +1,5 @@
+/* Copyright (C) 2025  Darko Milosevic <daremc86@gmail.com> */
+
 /* Copyright (C) 2013, 2018, 2019, 2020, 2021  Olga Yakovleva <olga@rhvoice.org> */
 
 /* This program is free software: you can redistribute it and/or modify */
@@ -61,6 +63,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class RHVoiceService extends TextToSpeechService implements LifecycleOwner {
+    private static Context storageContext = MyApplication.getStorageContext();
     public static final String KEY_PARAM_TEST_VOICE = "com.github.olga_yakovleva.rhvoice.android.param_test_voice";
 
     private static final String TAG = "RHVoiceTTSService";
@@ -298,7 +301,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
 
     private Map<String, LanguageSettings> getLanguageSettings(Tts tts) {
         Map<String, LanguageSettings> result = new HashMap<String, LanguageSettings>();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(storageContext);
         for (String language : tts.languageIndex.keySet()) {
             LanguageSettings settings = new LanguageSettings();
             String prefVoice = prefs.getString("language." + language + ".voice", null);
@@ -368,8 +371,8 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         }
         Tts tts = new Tts();
         try {
-            File configDir = Config.getDir(this);
-            tts.engine = new TTSEngine("", configDir.getAbsolutePath(), paths, PackageClient.getPath(this), CoreLogger.instance);
+            File configDir = Config.getDir(storageContext);
+            tts.engine = new TTSEngine("", configDir.getAbsolutePath(), paths, PackageClient.getPath(storageContext), CoreLogger.instance);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
                 Log.e(TAG, "Error during engine initialization", e);
@@ -435,11 +438,11 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
     private void onPackageDirectory(PackageDirectory dir) {
         dataManager.setPackageDirectory(dir);
         final List<String> oldPaths = paths;
-        paths = dataManager.getPaths(this);
+        paths = dataManager.getPaths(storageContext);
         if (!paths.equals(oldPaths)) {
             initialize();
         }
-        dataManager.scheduleSync(this, false);
+        dataManager.scheduleSync(storageContext, false);
     }
 
     private final ServiceLifecycleDispatcher lifecycleDispatcher = new ServiceLifecycleDispatcher(this);
@@ -454,12 +457,15 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
             Log.i(TAG, "Creating the service");
         handler = new Handler();
         lifecycleDispatcher.onServicePreSuperOnCreate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            storageContext.moveSharedPreferencesFrom(this, this.getPackageName() + "_preferences");
+        }
         IntentFilter filter = new IntentFilter(ACTION_CHECK_DATA);
         filter.addAction(ACTION_CONFIG_CHANGE);
         LocalBroadcastManager.getInstance(this).registerReceiver(dataStateReceiver, filter);
         registerPackageReceiver();
         dataManager.setPackageDirectory(Repository.get().getPackageDirectory());
-        paths = dataManager.getPaths(this);
+        paths = dataManager.getPaths(storageContext);
         initialize();
         Repository.get().getPackageDirectoryLiveData().observe(this, this::onPackageDirectory);
         Repository.get().check();
@@ -497,7 +503,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         if (voice == null) {
             final Locale loc = Locale.getDefault();
             final LanguagePack lp = Repository.get().createDataManager().getLanguageByCode(loc.getISO3Language());
-            if (lp != null && lp.isInstalled(this))
+            if (lp != null && lp.isInstalled(storageContext))
                 result[0] = lp.getCode();
             return result;
         }
@@ -516,7 +522,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         int result = TextToSpeech.LANG_NOT_SUPPORTED;
         final LanguagePack lp = Repository.get().createDataManager().getLanguageByCode(language);
         if (lp != null) {
-            for (VoicePack vp : lp.iterVoices().filter(vp -> vp.getEnabled(this) && vp.isInstalled(this))) {
+            for (VoicePack vp : lp.iterVoices().filter(vp -> vp.getEnabled(storageContext) && vp.isInstalled(storageContext))) {
                 if (result == TextToSpeech.LANG_NOT_SUPPORTED)
                     result = TextToSpeech.LANG_AVAILABLE;
                 if (TextUtils.isEmpty(country))
@@ -551,7 +557,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
     }
 
     private void applyMappedSettings(Tts tts) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(storageContext);
         Object oldPrefValue;
         String nativeValue;
         for (MappedSetting setting : tts.mappedSettings) {
@@ -672,7 +678,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         final LanguagePack lp = dm.getLanguageByCode(language);
         if (lp == null || !lp.hasVoices())
             return null;
-        if (lp.iterVoices().filter(v -> v.getEnabled(this) && v.isInstalled(this)).isEmpty())
+        if (lp.iterVoices().filter(v -> v.getEnabled(storageContext) && v.isInstalled(storageContext)).isEmpty())
             return null;
         return (new Locale(lp.getOldCode())).getDisplayLanguage(Locale.ENGLISH);
     }
@@ -686,8 +692,8 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
         final DataManager dm = Repository.get().createDataManager();
         for (LanguagePack lp : dm.iterLanguages()) {
             v = null;
-            for (VoicePack vp : lp.iterVoices().filter(vp -> vp.getEnabled(this) && vp.isInstalled(this))) {
-                v = vp.createAndroidVoice(this);
+            for (VoicePack vp : lp.iterVoices().filter(vp -> vp.getEnabled(storageContext) && vp.isInstalled(storageContext))) {
+                v = vp.createAndroidVoice(storageContext);
                 if (BuildConfig.DEBUG)
                     Log.v(TAG, "Voice: " + v.toString());
                 result.add(v);
@@ -712,7 +718,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
             final VoicePack v = lp.findVoice(name);
             if (v == null)
                 continue;
-            return (v.getEnabled(this) && v.isInstalled(this)) ? TextToSpeech.SUCCESS : TextToSpeech.ERROR;
+            return (v.getEnabled(storageContext) && v.isInstalled(storageContext)) ? TextToSpeech.SUCCESS : TextToSpeech.ERROR;
         }
         if (BuildConfig.DEBUG)
             Log.v(TAG, "Voice not found");
