@@ -66,7 +66,7 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
     public static final String KEY_PARAM_TEST_VOICE = "com.github.olga_yakovleva.rhvoice.android.param_test_voice";
 
     private static final String TAG = "RHVoiceTTSService";
-    private Context storageContext;
+    private static Context storageContext;
 
     private static final int[] languageSupportConstants = {TextToSpeech.LANG_NOT_SUPPORTED, TextToSpeech.LANG_AVAILABLE, TextToSpeech.LANG_COUNTRY_AVAILABLE, TextToSpeech.LANG_COUNTRY_VAR_AVAILABLE};
     private static final Pattern DEFAULT_VOICE_NAME_PATTERN = Pattern.compile("^([a-z]{3})-default$");
@@ -426,12 +426,12 @@ public final class RHVoiceService extends TextToSpeechService implements Lifecyc
                 Repository.get().getPackageDirectoryLiveData().observe(RHVoiceService.this, this);
                 return;
             }
-            dataManager.autoInstallVoice(RHVoiceService.this, languageCode, countryCode);
+            dataManager.autoInstallVoice(RHVoiceService.storageContext, languageCode, countryCode);
         }
 
         public void onChanged(PackageDirectory dir) {
             Repository.get().getPackageDirectoryLiveData().removeObserver(this);
-            new DataManager(dir).autoInstallVoice(RHVoiceService.this, languageCode, countryCode);
+            new DataManager(dir).autoInstallVoice(RHVoiceService.storageContext, languageCode, countryCode);
         }
     }
 
