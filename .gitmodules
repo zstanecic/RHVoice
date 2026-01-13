@@ -397,3 +397,6 @@
 [submodule "src/scripts/Slovak"]
 	path = src/scripts/Slovak
 	url = https://github.com/RHVoice/Slovak-src.git
+[submodule "src/scripts/Czech"]
+	path = src/scripts/Czech
+	url = https://github.com/RHVoice/czech-src.git
