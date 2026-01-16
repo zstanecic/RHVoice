@@ -400,3 +400,12 @@
 [submodule "src/scripts/Czech"]
 	path = src/scripts/Czech
 	url = https://github.com/RHVoice/czech-src.git
+[submodule "data/voices/marija"]
+	path = data/voices/marija
+	url = https://github.com/RHVoice/marija-hrv.git
+[submodule "data/voices/dasha-eng"]
+	path = data/voices/dasha-eng
+	url = https://github.com/RHVoice/dasha-eng.git
+[submodule "data/voices/ryhor-rus"]
+	path = data/voices/ryhor-rus
+	url = https://github.com/RHVoice/ryhor-rus.git
