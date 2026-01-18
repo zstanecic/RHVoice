@@ -409,3 +409,6 @@
 [submodule "data/voices/ryhor-rus"]
 	path = data/voices/ryhor-rus
 	url = https://github.com/RHVoice/ryhor-rus.git
+[submodule "src/scripts/Polish"]
+	path = src/scripts/Polish
+	url = https://github.com/RHVoice/polish-src.git
