@@ -1,4 +1,4 @@
-#!/usr/bin/python2 -B
+#!/usr/bin/env python3
 # -*- coding: utf-8; mode: Python; indent-tabs-mode: t; tab-width: 4; python-indent: 4 -*-
 
 # Copyright (C) 2012  Olga Yakovleva <yakovleva.o.v@gmail.com>
@@ -23,6 +23,7 @@ import re
 import argparse
 import subprocess
 import collections
+import sys
 import regex
 
 vowels=set(u"аеёиоуыэюя")
@@ -30,7 +31,7 @@ vowels=set(u"аеёиоуыэюя")
 def find_first_group(parsed_regex,source_string):
 	assert(isinstance(parsed_regex,regex.sequence_node))
 	index=-1
-	for i in xrange(len(parsed_regex.subexpressions)):
+	for i in range(len(parsed_regex.subexpressions)):
 		location=parsed_regex.subexpressions[i].location
 		if location>0 and source_string[location-1]=="(" and source_string[:location].count("(")==1:
 			index=i
@@ -38,10 +39,10 @@ def find_first_group(parsed_regex,source_string):
 	return index
 
 def get_vowel_positions(word):
-	return [i for i in xrange(len(word)) if word[i] in vowels]
+	return [i for i in range(len(word)) if word[i] in vowels]
 
 def find_prev_vowel(word,i):
-	for j in xrange(min(i,len(word)-1),-1,-1):
+	for j in range(min(i,len(word)-1),-1,-1):
 		if word[j] in vowels:
 			return j
 	return -1
@@ -116,6 +117,8 @@ def load_dict(inpath):
 	result=collections.OrderedDict()
 	with codecs.open(inpath,"r","koi8-r") as f_in:
 		for line in f_in:
+			if not line.strip() or line.lstrip().startswith("#"):
+				continue
 			tokens=line.lower().split()
 			if len(tokens)==1:
 				result[tokens[0]]=""
@@ -127,7 +130,7 @@ def save_dict(lex,outpath,name):
 	max_count=500000
 	number=0
 	f_out=None
-	for word,pron in lex.iteritems():
+	for word,pron in lex.items():
 		if f_out is None:
 			number+=1
 			count=0
@@ -144,20 +147,19 @@ def save_dict(lex,outpath,name):
 	if f_out is not None:
 		f_out.close()
 		f_out=None
-	foma=subprocess.Popen(["foma","-p"],stdin=subprocess.PIPE)
-	foma.stdin.write("read spaced-text {}.1.txt\n".format(outpath))
-	for i in xrange(2,number+1):
-		foma.stdin.write("read spaced-text {}.{}.txt\n".format(outpath,i))
-		foma.stdin.write("union\n")
-	foma.stdin.write("define {}\n".format(name))
-	foma.stdin.write("save defined {}.bin\n".format(outpath))
-	foma.stdin.write("quit\n")
-	foma.wait()
+	commands=["read spaced-text {}.1.txt".format(outpath)]
+	for i in range(2,number+1):
+		commands.append("read spaced-text {}.{}.txt".format(outpath,i))
+		commands.append("union")
+	commands.append("define {}".format(name))
+	commands.append("save defined {}.bin".format(outpath))
+	commands.append("quit")
+	subprocess.run(["foma","-p"],input="\n".join(commands)+"\n",text=True,encoding="utf-8",check=True)
 
 def import_explicit_dict(args):
 	source=load_dict(os.path.join(args.datadir,"explicit.dict"))
 	result=collections.OrderedDict()
-	for word,pron in source.iteritems():
+	for word,pron in source.items():
 		pattern=describe_transformation(word,pron)
 		if pattern is not None:
 			new_pron=apply_transformation(word,pattern)
@@ -165,10 +167,21 @@ def import_explicit_dict(args):
 				result[word]=new_pron
 	save_dict(result,"explicit_dict","ExplicitDict")
 
+def import_lexicon_test_dict(args):
+	source=load_dict(os.path.join(args.datadir,"lexicon.test"))
+	result=collections.OrderedDict()
+	for word,pron in source.items():
+		pattern=describe_transformation(word,pron)
+		if pattern is not None:
+			new_pron=apply_transformation(word,pattern)
+			if new_pron and new_pron!=word:
+				result[word]=new_pron
+	save_dict(result,"lexicon_test_dict","LexiconTestDict")
+
 def import_lexicon_rules(args):
 	lex=load_dict(os.path.join(args.datadir,"implicit.dict"))
 	with codecs.open("base_forms.txt","w","utf-8") as f_out:
-		for word in lex.iterkeys():
+		for word in lex.keys():
 			f_out.write(word)
 			f_out.write("\n")
 	lex=load_dict(os.path.join(args.datadir,"lexicon.rules"))
@@ -176,7 +189,7 @@ def import_lexicon_rules(args):
 		f_out.write("read text base_forms.txt\n")
 		f_out.write("define BaseForms\n")
 		count=0
-		for pattern,base_form_ending in lex.iteritems():
+		for pattern,base_form_ending in lex.items():
 			count+=1
 			print("Parsing rule {}".format(count))
 			parse_result=regex.parse(pattern)
@@ -192,7 +205,7 @@ def import_lexicon_rules(args):
 			f_out.write(u"define Ending {} ; \n".format(ending))
 			f_out.write("define Rule{index} Stem [Ending:BaseFormEnding] ; \n".format(index=count))
 		f_out.write("regex \n")
-		f_out.write(u" .P. \n".join(u"Rule{index}".format(index=i) for i in xrange(1,count+1)))
+		f_out.write(u" .P. \n".join(u"Rule{index}".format(index=i) for i in range(1,count+1)))
 		f_out.write(" ; \n")
 		f_out.write("save stack lexicon_rules.bin\n")
 	subprocess.check_call(["foma","-f","lexicon_rules.foma"])
@@ -200,7 +213,7 @@ def import_lexicon_rules(args):
 def import_general_rules(args):
 	source=load_dict(os.path.join(args.datadir,"general.rules"))
 	with codecs.open("general_rules.foma","w","utf-8") as f_out:
-		for i,pattern in enumerate(source.iterkeys()):
+		for i,pattern in enumerate(source.keys()):
 			print("Parsing rule {}".format(i+1))
 			parse_result=regex.parse(pattern)
 			parsed_regex=parse_result.root
@@ -211,7 +224,7 @@ def import_general_rules(args):
 			after=u" ".join(expr.format_as_foma_regex() for expr in parsed_regex.subexpressions[index+1:]) or "0"
 			f_out.write(u"define Rule{index} {prefix} [{before}] 0:%+ [{after}] ; \n".format(index=i+1,prefix=prefix,before=before,after=after))
 		f_out.write("regex [\n")
-		f_out.write(u" .P. \n".join("Rule{}".format(i+1) for i in xrange(len(source))))
+		f_out.write(u" .P. \n".join("Rule{}".format(i+1) for i in range(len(source))))
 		f_out.write("] .o. \n")
 		f_out.write(u'[[а:А|е:Е|ё:ё|и:И|о:О|у:У|ы:Ы|э:Э|ю:Ю|я:Я] "+":0 -> || _ ] ; \n')
 		f_out.write("save stack general_rules.bin\n")
@@ -220,7 +233,7 @@ def import_general_rules(args):
 def expand_implicit_dict(args):
 	source=load_dict(os.path.join(args.datadir,"implicit.dict"))
 	patterns=dict()
-	for keyword,keyword_pron in source.iteritems():
+	for keyword,keyword_pron in source.items():
 		pattern=describe_transformation(keyword,keyword_pron)
 		if pattern is not None:
 			patterns[keyword]=pattern
@@ -230,18 +243,19 @@ def expand_implicit_dict(args):
 	f_out.seek(0)
 	rules=collections.OrderedDict()
 	for line in f_out:
-		if line.isspace():
+		decoded=line.decode("utf-8")
+		if decoded.isspace():
 			continue
-		if "?" in line:
+		if "?" in decoded:
 			continue
-		base_form,word=line.decode("utf-8").split()
+		base_form,word=decoded.split()
 		if word in rules:
 			if len(base_form)>len(rules[word]):
 				rules[word]=base_form
 		else:
 			rules[word]=base_form
 	result=collections.OrderedDict()
-	for word,base_form in rules.iteritems():
+	for word,base_form in rules.items():
 		if base_form not in patterns:
 			continue
 		pattern=correct_transformation(word,patterns[base_form])
@@ -250,19 +264,21 @@ def expand_implicit_dict(args):
 	save_dict(result,"implicit_dict","ImplicitDict")
 
 def merge_dicts(args):
-	foma=subprocess.Popen(["foma","-p"],stdin=subprocess.PIPE)
-	foma.stdin.write("load defined explicit_dict.bin\n")
-	foma.stdin.write("load defined implicit_dict.bin\n")
-	foma.stdin.write("define Dict ExplicitDict .P. ImplicitDict;\n")
-	foma.stdin.write("regex _notid(Dict) .o. Dict ; \n")
-	foma.stdin.write("save stack dict.bin\n")
-	foma.stdin.write("quit\n")
-	foma.wait()
+	commands=[
+		"load defined lexicon_test_dict.bin",
+		"load defined explicit_dict.bin",
+		"load defined implicit_dict.bin",
+		"define Dict LexiconTestDict .P. ExplicitDict .P. ImplicitDict;",
+		"regex _notid(Dict) .o. Dict ; ",
+		"save stack dict.bin",
+		"quit",
+	]
+	subprocess.run(["foma","-p"],input="\n".join(commands)+"\n",text=True,encoding="utf-8",check=True)
 
 def test(args):
 	source=load_dict(os.path.join(args.datadir,"lexicon.test"))
 	lex=collections.OrderedDict()
-	for word,pron in source.iteritems():
+	for word,pron in source.items():
 		pattern=describe_transformation(word,pron)
 		if pattern is not None:
 			new_pron=apply_transformation(word,pattern)
@@ -272,19 +288,21 @@ def test(args):
 	errors=list()
 	for fst in ["dict.bin","general_rules.bin"]:
 		flookup=subprocess.Popen(["flookup","-i",fst],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-		output,error=flookup.communicate(u"\n".join(lex.iterkeys()).encode("utf-8"))
+		output,error=flookup.communicate("\n".join(lex.keys()).encode("utf-8"))
 		for line in output.decode("utf-8").split("\n"):
 			if not line:
 				continue
 			if "?" in line:
 				continue
 			word,pron=line.split()
+			if word not in lex:
+				continue
 			if pron!=lex[word]:
 				errors.append(word)
 			del lex[word]
-	errors.extend(lex.iterkeys())
+	errors.extend(lex.keys())
 	for word in errors:
-		print word
+		sys.stdout.buffer.write((word+"\n").encode("utf-8"))
 
 if __name__=="__main__":
 	arg_parser=argparse.ArgumentParser(description="Import RuLex")
@@ -296,6 +314,8 @@ if __name__=="__main__":
 	import_general_rules_parser.set_defaults(func=import_general_rules)
 	import_explicit_dict_parser=arg_subparsers.add_parser("import-explicit-dict")
 	import_explicit_dict_parser.set_defaults(func=import_explicit_dict)
+	import_lexicon_test_dict_parser=arg_subparsers.add_parser("import-lexicon-test-dict")
+	import_lexicon_test_dict_parser.set_defaults(func=import_lexicon_test_dict)
 	expand_implicit_dict_parser=arg_subparsers.add_parser("expand-implicit-dict")
 	expand_implicit_dict_parser.set_defaults(func=expand_implicit_dict)
 	merge_dicts_parser=arg_subparsers.add_parser("merge-dicts")

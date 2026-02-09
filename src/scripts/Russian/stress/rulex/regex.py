@@ -65,13 +65,19 @@ class letterset_node(node):
 		self.letters=sorted(set(toks[-1].asList()))
 
 	def format_as_foma_regex(self):
-		return ("\[" if self.negated else "[")+u"|".join(self.letters)+"]"
+		return ("\\[" if self.negated else "[")+u"|".join(self.letters)+"]"
 
 class dot_node(node):
 	def format_as_foma_regex(self):
 		return "?"
 
-Letter=pyp.oneOf(list(letters))
+def make_factor(src_str,loc,toks):
+	return repetition_node(src_str,loc,[toks[0]]) if len(toks[0])==2 else toks[0][0]
+
+def make_alternation(src_str,loc,toks):
+	return alternation_node(src_str,loc,[toks[0]]) if len(toks[0])>1 else toks[0][0]
+
+Letter=pyp.one_of(list(letters))
 Letterset=pyp.Literal("[").suppress()+pyp.Optional(pyp.Literal("^"))+pyp.Group(pyp.OneOrMore(Letter.copy()))+pyp.Literal("]").suppress()
 Dot=pyp.Literal(".")
 StartAnchor=pyp.Optional(pyp.StringStart()+pyp.Literal("^"))
@@ -80,11 +86,22 @@ Letter.setParseAction(letter_node)
 Letterset.setParseAction(letterset_node)
 Dot.setParseAction(dot_node)
 Atom=Letter|Letterset|Dot
-Regex0=pyp.operatorPrecedence(Atom,
-							  [(pyp.oneOf("* + ?"),1,pyp.opAssoc.LEFT,repetition_node),
-							   (pyp.Empty(),2,pyp.opAssoc.LEFT,sequence_node),
-							   (pyp.Literal("|").suppress(),2,pyp.opAssoc.LEFT,alternation_node)])
+Regex0=pyp.Forward()
+Grouped=pyp.Literal("(").suppress()+Regex0+pyp.Literal(")").suppress()
+Atom=Letter|Letterset|Dot|Grouped
+Factor=pyp.Group(Atom+pyp.Optional(pyp.one_of("* + ?")))
+Factor.setParseAction(make_factor)
+Sequence=pyp.Group(pyp.OneOrMore(Factor))
+Sequence.setParseAction(sequence_node)
+Alternation=pyp.Group(Sequence+pyp.ZeroOrMore(pyp.Literal("|").suppress()+Sequence))
+Alternation.setParseAction(make_alternation)
+Regex0 <<= Alternation
 Regex=StartAnchor.setResultsName("start_of_string")+Regex0.setResultsName("root")+EndAnchor.setResultsName("end_of_string")
 
 def parse(string):
-	return Regex.parseString(string)
+	result=Regex.parse_string(string)
+	root=result["root"]
+	while isinstance(root,pyp.ParseResults) and len(root)==1:
+		root=root[0]
+	result["root"]=root
+	return result
