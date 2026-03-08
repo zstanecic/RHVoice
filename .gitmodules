@@ -367,3 +367,60 @@
 [submodule "src/scripts/Hungarian"]
 	path = src/scripts/Hungarian
 	url = https://github.com/zstanecic/hungarian-src.git
+[submodule "data/languages/Spanish"]
+	path = data/languages/Spanish
+	url = https://github.com/rhvoice/spanish-bin
+[submodule "src/scripts/Spanish"]
+	path = src/scripts/Spanish
+	url = https://github.com/RHVoice/spanish-src
+[submodule "data/voices/Mateo"]
+	path = data/voices/Mateo
+	url = https://github.com/RHVoice/mateo-spa
+[submodule "data/languages/Belarusian"]
+	path = data/languages/Belarusian
+	url = https://github.com/RHVoice/bel-bin.git
+[submodule "src/scripts/Belarusian"]
+	path = src/scripts/Belarusian
+	url = https://github.com/RHVoice/bel-src.git
+[submodule "data/voices/dasha-blr"]
+	path = data/voices/dasha-blr
+	url = https://github.com/RHVoice/dasha-blr.git
+[submodule "data/voices/dasha-rus"]
+	path = data/voices/dasha-rus
+	url = https://github.com/RHVoice/dasha-rus.git
+[submodule "data/voices/lyudmila-rus"]
+	path = data/voices/lyudmila-rus
+	url = https://github.com/RHVoice/lyudmila-rus.git
+[submodule "data/voices/lyudmila-blr"]
+	path = data/voices/lyudmila-blr
+	url = https://github.com/RHVoice/lyudmila-blr.git
+[submodule "data/voices/michal-blr"]
+	path = data/voices/michal-blr
+	url = https://github.com/RHVoice/michal-blr.git
+[submodule "data/voices/michal-rus"]
+	path = data/voices/michal-rus
+	url = https://github.com/RHVoice/michal-rus.git
+[submodule "data/voices/ryhor-blr"]
+	path = data/voices/ryhor-blr
+	url = https://github.com/RHVoice/ryhor-blr.git
+[submodule "data/voices/alena-blr"]
+	path = data/voices/alena-blr
+	url = https://github.com/RHVoice/alena-blr.git
+[submodule "src/scripts/Slovak"]
+	path = src/scripts/Slovak
+	url = https://github.com/RHVoice/Slovak-src.git
+[submodule "src/scripts/Czech"]
+	path = src/scripts/Czech
+	url = https://github.com/RHVoice/czech-src.git
+[submodule "data/voices/marija"]
+	path = data/voices/marija
+	url = https://github.com/RHVoice/marija-hrv.git
+[submodule "data/voices/dasha-eng"]
+	path = data/voices/dasha-eng
+	url = https://github.com/RHVoice/dasha-eng.git
+[submodule "data/voices/ryhor-rus"]
+	path = data/voices/ryhor-rus
+	url = https://github.com/RHVoice/ryhor-rus.git
+[submodule "src/scripts/Polish"]
+	path = src/scripts/Polish
+	url = https://github.com/RHVoice/polish-src.git

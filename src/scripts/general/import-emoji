@@ -43,6 +43,10 @@ languages={
 	{
 		"ids":["pt"]
 	 },
+	"Spanish":
+	{
+		"ids":["es"]
+	 },
 	"Georgian":
 	{
 		"ids":["ka"]
@@ -79,15 +83,19 @@ languages={
 	{
 		"ids":["sk"]
 	 },
-	 "Serbian":
+	"Serbian":
 	{
 		"ids":["sr"]
 	 },
 	"Croatian":
 	{
-	 "ids":["hr"]
+		"ids":["hr"]
 	 },
-	   }
+	"Belarusian":
+	{
+		"ids":["be"]
+	 },
+	}
 
 sets=defaultdict(set)
 annotations=None
@@ -197,5 +205,5 @@ for lang_name, lang_props in sorted(languages.items()):
 	inpath = os.path.join(tempdir.name, "emoji.att")
 	outpath=os.path.join("data","languages",lang_name,"emoji.fst")
 	print("Creating {}".format(outpath))
-	subprocess.check_call([att2bin,inpath,outpath])
+	subprocess.check_call(["python",att2bin,inpath,outpath])
 	tempdir.cleanup()
