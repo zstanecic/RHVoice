@@ -28,7 +28,7 @@ include(CPackComponent)
 include(Hardening)
 include(VersionFromGit)
 find_package(Sanitizers)
-getVersionFromGit("RHVOICE" "1.2.2")
+getVersionFromGit("RHVOICE" "1.18.4")
 
 if(${CMAKE_VERSION} VERSION_GREATER "3.12")
 	set(CMAKE_CXX_STANDARD 20)

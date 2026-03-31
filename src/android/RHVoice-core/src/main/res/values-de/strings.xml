@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="default_voice_title">Standardstimme</string>
+  <string name="default_voice_dialog_title">Stimme auswählen</string>
+  <string name="detect_language_title">Spracherkennung</string>
+  <string name="detect_language_desc">Wechseln Sie zu dieser Sprache, wenn sie erkannt wird und Sie normalerweise eine andere Sprache verwenden.</string>
+  <string name="speech_volume">Sprachlautstärke</string>
+  <string name="speech_rate">Sprechgeschwindigkeit</string>
+  <string name="pseudo_english_title">Englische Wörter</string>
+  <string name="pseudo_english_desc">Versuchen Sie, englische Wörter richtig zu lesen</string>
+  <string name="settings">Einstellungen</string>
+  <string name="wifi_only_title">Nur Wi-Fi</string>
+  <string name="wifi_only_desc">Stimmen nur über WLAN herunterladen</string>
+  <string name="speech_quality">Sprachqualität</string>
+  <string-array name="quality_labels">
+    <item name="quality_labels_1">Für Telefone mit geringem Stromverbrauch</item>
+    <item name="quality_labels_2">Hohe Reaktionsfähigkeit</item>
+    <item name="quality_labels_3">Beste Qualität</item>
+  </string-array>
+  <string name="languages">Sprachen</string>
+  <string name="voice_remove_question">Möchten Sie diese Stimme wirklich deinstallieren?</string>
+  <string name="install">Installieren</string>
+  <string name="uninstall">Deinstallieren</string>
+  <string name="play">Abspielen</string>
+  <string name="stop">Stopp</string>
+  <string name="increase">Erhöhen</string>
+  <string name="decrease">Verringern</string>
+  <string name="reset">Zurücksetzen</string>
+  <string name="version">Version</string>
+  <string name="user_dicts">Benutzerwörterbücher</string>
+  <string name="add">Hinzufügen</string>
+  <string name="remove">Entfernen</string>
+  <string name="config_file">Konfigurationsdatei</string>
+  <string name="metered_network_warning">Dieses Gerät ist derzeit mit einem getakteten Netzwerk verbunden. Möchten Sie die Stimme später herunterladen, wenn ein getaktetes Netzwerk verfügbar ist?</string>
+  <string name="download_now">Jetzt herunterladen</string>
+  <string name="download_later">Später herunterladen</string>
+</resources>

@@ -421,3 +421,15 @@
 [submodule "src/scripts/Romanian"]
 	path = src/scripts/Romanian
 	url = https://github.com/RHVoice/romanian-src.git
+[submodule "data/languages/Luxembourgish"]
+	path = data/languages/Luxembourgish
+	url = https://github.com/louderpages/RHVoice-Luxembourgish-bin.git
+[submodule "src/scripts/Luxembourgish"]
+	path = src/scripts/Luxembourgish
+	url = https://github.com/louderpages/RHVoice-Luxembourgish-src.git
+[submodule "data/voices/mia"]
+	path = data/voices/mia
+	url = https://github.com/louderpages/RHVoice-Mia.git
+[submodule "data/voices/mil"]
+	path = data/voices/mil
+	url = https://github.com/louderpages/RHVoice-Mil.git
