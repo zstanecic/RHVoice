@@ -40,9 +40,9 @@ public final class Config {
     }
 
     public static File getEngineDir(Context context) {
-        if (!DirectBoot.isSupported())
-            return getDir(context);
-        return DirectBoot.getDir(context, "config");
+        if (DirectBoot.isInDirectBoot(context))
+            return getDirectBootDir(context);
+        return getDir(context);
     }
 
     public static File getDictsRootDir(Context ctx) {
@@ -57,8 +57,14 @@ public final class Config {
         return new File(getDir(ctx), CONFIG_FILE_NAME);
     }
 
+    private static File getDirectBootDir(Context context) {
+        if (!DirectBoot.isSupported())
+            return getDir(context);
+        return DirectBoot.getDir(context, "config");
+    }
+
     public static File getDirectBootDictsRootDir(Context ctx) {
-        return new File(getEngineDir(ctx), "dicts");
+        return new File(getDirectBootDir(ctx), "dicts");
     }
 
     public static File getDirectBootLangDictsDir(Context ctx, String langName) {
@@ -66,7 +72,7 @@ public final class Config {
     }
 
     public static File getDirectBootConfigFile(Context ctx) {
-        return new File(getEngineDir(ctx), CONFIG_FILE_NAME);
+        return new File(getDirectBootDir(ctx), CONFIG_FILE_NAME);
     }
 
     public static boolean hasConfigFile(Context ctx) {
@@ -87,26 +93,31 @@ public final class Config {
         if (!DirectBoot.isSupported() || !DirectBoot.isUserUnlocked(ctx))
             return;
         final File sourceDir = getDir(ctx);
-        final File destinationDir = getEngineDir(ctx);
+        final File destinationDir = getDirectBootDir(ctx);
         if (sourceDir.equals(destinationDir))
             return;
-        syncFile(getConfigFile(ctx), getDirectBootConfigFile(ctx));
-        syncDirectory(getDictsRootDir(ctx), getDirectBootDictsRootDir(ctx));
+        boolean configSynced = syncFile(getConfigFile(ctx), getDirectBootConfigFile(ctx));
+        boolean dictsSynced = syncDirectory(getDictsRootDir(ctx), getDirectBootDictsRootDir(ctx));
+        if (BuildConfig.DEBUG && !configSynced)
+            Log.w(TAG, "Unable to synchronize configuration file to direct boot storage");
+        if (BuildConfig.DEBUG && !dictsSynced)
+            Log.w(TAG, "Unable to synchronize dictionaries to direct boot storage");
     }
 
-    private static void syncFile(File source, File destination) {
+    private static boolean syncFile(File source, File destination) {
         if (source.exists())
-            DirectBoot.copyDirectory(source, destination);
-        else
-            destination.delete();
+            return DirectBoot.copyDirectory(source, destination);
+        return DirectBoot.delete(destination);
     }
 
-    private static void syncDirectory(File source, File destination) {
+    private static boolean syncDirectory(File source, File destination) {
         if (source.exists()) {
-            DirectBoot.copyDirectory(source, destination);
+            if (!DirectBoot.copyDirectory(source, destination))
+                return false;
             deleteMissingChildren(source, destination);
+            return true;
         } else {
-            DirectBoot.delete(destination);
+            return DirectBoot.delete(destination);
         }
     }
 
@@ -117,6 +128,8 @@ public final class Config {
         for (File child : children) {
             File sourceChild = new File(source, child.getName());
             if (!sourceChild.exists()) {
+                DirectBoot.delete(child);
+            } else if (sourceChild.isDirectory() != child.isDirectory()) {
                 DirectBoot.delete(child);
             } else if (child.isDirectory()) {
                 deleteMissingChildren(sourceChild, child);
