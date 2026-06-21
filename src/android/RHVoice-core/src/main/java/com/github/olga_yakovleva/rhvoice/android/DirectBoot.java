@@ -30,6 +30,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -41,6 +43,8 @@ final class DirectBoot {
     private static final String MIGRATED_PREF_PREFIX = "migrated.preferences.";
     private static final String MIGRATED_DIR_PREFIX = "migrated.dir.";
     private static final ExecutorService migrationExecutor = Executors.newSingleThreadExecutor();
+    private static final List<Runnable> migrationCallbacks = new ArrayList<>();
+    private static boolean migrationInProgress = false;
 
     private DirectBoot() {
     }
@@ -58,6 +62,12 @@ final class DirectBoot {
 
     public static boolean isInDirectBoot(Context context) {
         return isSupported() && !isUserUnlocked(context);
+    }
+
+    public static boolean isMigrationInProgress() {
+        synchronized (DirectBoot.class) {
+            return migrationInProgress;
+        }
     }
 
     public static Context getDeviceProtectedContext(Context context) {
@@ -102,16 +112,47 @@ final class DirectBoot {
             return;
         }
         SharedPreferences state = getMigrationState(directContext);
+        boolean startMigration = false;
         synchronized (DirectBoot.class) {
             migrateSharedPreferences(appContext, directContext, state);
             migratePrivateDir(appContext, directContext, state, PACKAGE_DIR);
-        }
-        migrationExecutor.execute(() -> {
-            Config.syncToDirectBootStorage(appContext);
-            migratePrivateDirs(appContext, directContext, state);
             if (onComplete != null)
-                onComplete.run();
+                migrationCallbacks.add(onComplete);
+            if (!migrationInProgress) {
+                migrationInProgress = true;
+                startMigration = true;
+            }
+        }
+        if (!startMigration)
+            return;
+        migrationExecutor.execute(() -> {
+            try {
+                Config.syncToDirectBootStorage(appContext);
+                migratePrivateDirs(appContext, directContext, state);
+            } catch (RuntimeException e) {
+                if (BuildConfig.DEBUG)
+                    Log.w(TAG, "Direct boot migration failed", e);
+            } finally {
+                finishMigration();
+            }
         });
+    }
+
+    private static void finishMigration() {
+        List<Runnable> callbacks;
+        synchronized (DirectBoot.class) {
+            migrationInProgress = false;
+            callbacks = new ArrayList<>(migrationCallbacks);
+            migrationCallbacks.clear();
+        }
+        for (Runnable callback : callbacks) {
+            try {
+                callback.run();
+            } catch (RuntimeException e) {
+                if (BuildConfig.DEBUG)
+                    Log.w(TAG, "Direct boot migration callback failed", e);
+            }
+        }
     }
 
     private static SharedPreferences getMigrationState(Context directContext) {
@@ -119,12 +160,23 @@ final class DirectBoot {
     }
 
     private static boolean isMigrationDone(SharedPreferences state, String key) {
-        return state.getBoolean(key, false);
+        try {
+            return state.getBoolean(key, false);
+        } catch (ClassCastException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Ignoring invalid migration marker " + key, e);
+            return false;
+        }
     }
 
     private static void markMigrationDone(SharedPreferences state, String key) {
-        if (!state.edit().putBoolean(key, true).commit() && BuildConfig.DEBUG)
-            Log.w(TAG, "Unable to persist migration marker " + key);
+        try {
+            if (!state.edit().putBoolean(key, true).commit() && BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to persist migration marker " + key);
+        } catch (RuntimeException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to persist migration marker " + key, e);
+        }
     }
 
     private static void migrateSharedPreferences(Context sourceContext, Context directContext, SharedPreferences state) {
@@ -161,8 +213,14 @@ final class DirectBoot {
     private static boolean sharedPreferencesFileExists(Context context, String name) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
             return false;
-        File prefsDir = new File(context.getDataDir(), "shared_prefs");
-        return new File(prefsDir, name + ".xml").exists() || new File(prefsDir, name + ".xml.bak").exists();
+        try {
+            File prefsDir = new File(context.getDataDir(), "shared_prefs");
+            return new File(prefsDir, name + ".xml").exists() || new File(prefsDir, name + ".xml.bak").exists();
+        } catch (RuntimeException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to check shared preferences " + name, e);
+            return true;
+        }
     }
 
     private static void migratePrivateDirs(Context sourceContext, Context directContext, SharedPreferences state) {
@@ -171,31 +229,36 @@ final class DirectBoot {
     }
 
     private static void migratePrivateDir(Context sourceContext, Context directContext, SharedPreferences state, String name) {
-        File source = getPrivateDir(sourceContext, name);
-        String key = MIGRATED_DIR_PREFIX + name;
-        if (isMigrationDone(state, key)) {
-            delete(source);
-            return;
-        }
-        if (!source.exists()) {
-            markMigrationDone(state, key);
-            return;
-        }
-        File destination = getPrivateDir(directContext, name);
-        if (sameFile(source, destination)) {
-            markMigrationDone(state, key);
-            return;
-        }
-        File parent = destination.getParentFile();
-        if (parent == null || (!parent.isDirectory() && !parent.mkdirs()))
-            return;
-        if (!destination.exists() && source.renameTo(destination)) {
-            markMigrationDone(state, key);
-            return;
-        }
-        if (copyDirectory(source, destination, true)) {
-            markMigrationDone(state, key);
-            delete(source);
+        try {
+            File source = getPrivateDir(sourceContext, name);
+            String key = MIGRATED_DIR_PREFIX + name;
+            if (isMigrationDone(state, key)) {
+                delete(source);
+                return;
+            }
+            if (!source.exists()) {
+                markMigrationDone(state, key);
+                return;
+            }
+            File destination = getPrivateDir(directContext, name);
+            if (sameFile(source, destination)) {
+                markMigrationDone(state, key);
+                return;
+            }
+            File parent = destination.getParentFile();
+            if (parent == null || (!parent.isDirectory() && !parent.mkdirs()))
+                return;
+            if (!destination.exists() && source.renameTo(destination)) {
+                markMigrationDone(state, key);
+                return;
+            }
+            if (copyDirectory(source, destination, true)) {
+                markMigrationDone(state, key);
+                delete(source);
+            }
+        } catch (RuntimeException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to migrate private directory " + name, e);
         }
     }
 
@@ -218,24 +281,30 @@ final class DirectBoot {
     }
 
     private static boolean copyDirectory(File source, File destination, boolean keepNewerDestination) {
-        if (!source.exists())
-            return true;
-        if (source.isDirectory()) {
-            if (destination.exists() && !destination.isDirectory() && !delete(destination))
-                return false;
-            if (!destination.isDirectory() && !destination.mkdirs())
-                return false;
-            File[] children = source.listFiles();
-            if (children == null)
-                return false;
-            for (File child : children) {
-                File childDestination = new File(destination, child.getName());
-                if (!copyDirectory(child, childDestination, keepNewerDestination))
+        try {
+            if (!source.exists())
+                return true;
+            if (source.isDirectory()) {
+                if (destination.exists() && !destination.isDirectory() && !delete(destination))
                     return false;
+                if (!destination.isDirectory() && !destination.mkdirs())
+                    return false;
+                File[] children = source.listFiles();
+                if (children == null)
+                    return false;
+                for (File child : children) {
+                    File childDestination = new File(destination, child.getName());
+                    if (!copyDirectory(child, childDestination, keepNewerDestination))
+                        return false;
+                }
+                return true;
+            } else {
+                return copyFile(source, destination, keepNewerDestination);
             }
-            return true;
-        } else {
-            return copyFile(source, destination, keepNewerDestination);
+        } catch (SecurityException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to copy " + source.getAbsolutePath(), e);
+            return false;
         }
     }
 
@@ -257,7 +326,7 @@ final class DirectBoot {
         File tmp;
         try {
             tmp = File.createTempFile(getTempFilePrefix(destination), ".tmp", parent);
-        } catch (IOException e) {
+        } catch (IOException | SecurityException e) {
             if (BuildConfig.DEBUG)
                 Log.w(TAG, "Unable to create temporary file for " + destination.getAbsolutePath(), e);
             return false;
@@ -265,23 +334,30 @@ final class DirectBoot {
         try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(source));
              BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(tmp))) {
             DataPack.copyBytes(in, out, null);
-        } catch (IOException e) {
+        } catch (IOException | SecurityException e) {
             if (BuildConfig.DEBUG)
                 Log.w(TAG, "Unable to copy " + source.getAbsolutePath(), e);
             delete(tmp);
             return false;
         }
-        tmp.setLastModified(source.lastModified());
-        if (destination.exists() && !delete(destination)) {
+        try {
+            tmp.setLastModified(source.lastModified());
+            if (destination.exists() && !delete(destination)) {
+                delete(tmp);
+                return false;
+            }
+            if (!tmp.renameTo(destination)) {
+                delete(tmp);
+                return false;
+            }
+            destination.setLastModified(source.lastModified());
+            return true;
+        } catch (SecurityException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to finish copying " + source.getAbsolutePath(), e);
             delete(tmp);
             return false;
         }
-        if (!tmp.renameTo(destination)) {
-            delete(tmp);
-            return false;
-        }
-        destination.setLastModified(source.lastModified());
-        return true;
     }
 
     private static String getTempFilePrefix(File destination) {
@@ -290,17 +366,23 @@ final class DirectBoot {
     }
 
     static boolean delete(File obj) {
-        if (!obj.exists())
-            return true;
-        if (obj.isDirectory()) {
-            File[] children = obj.listFiles();
-            if (children != null) {
-                for (File child : children) {
-                    if (!delete(child))
-                        return false;
+        try {
+            if (!obj.exists())
+                return true;
+            if (obj.isDirectory()) {
+                File[] children = obj.listFiles();
+                if (children != null) {
+                    for (File child : children) {
+                        if (!delete(child))
+                            return false;
+                    }
                 }
             }
+            return obj.delete();
+        } catch (SecurityException e) {
+            if (BuildConfig.DEBUG)
+                Log.w(TAG, "Unable to delete " + obj.getAbsolutePath(), e);
+            return false;
         }
-        return obj.delete();
     }
 }
